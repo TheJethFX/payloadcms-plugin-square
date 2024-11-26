@@ -33,7 +33,7 @@ export async function syncCategories(payload: Payload, options: SquarePluginOpti
 			});
 
 			const categoryData = {
-				name: object.categoryData?.name || undefined,
+				name: object.categoryData?.name || 'N/A',
 				squareId: object.id,
 				updatedAt: object.updatedAt && object.updatedAt,
 			};
@@ -79,16 +79,16 @@ export async function syncItems(payload: Payload, options: SquarePluginOptions) 
 
 		// Update or create items
 		for (const object of items) {
-			const categoryId = object.itemData?.reportingCategory
+			const squareCategoryId = object.itemData?.reportingCategory
 				? object.itemData.reportingCategory.id
 				: null;
 
-			if (categoryId) {
+			if (squareCategoryId) {
 				const categories = await payload.find({
 					collection: 'square-categories',
 					where: {
 						squareId: {
-							in: categoryId,
+							in: squareCategoryId,
 						},
 					},
 				});
@@ -103,12 +103,14 @@ export async function syncItems(payload: Payload, options: SquarePluginOptions) 
 				});
 
 				const itemData = {
-					name: object.itemData?.name || undefined,
-					category: categories.docs[0]?.id,
+					name: object.itemData?.name || 'N/A',
+					categoryId: categories.docs[0]?.id.toString(),
+					categoryName: categories.docs[0]?.name || 'N/A',
 					imageIds:
 						object.itemData?.imageIds?.map((value) => {
 							return { id: value };
 						}) || [],
+					squareCategoryId,
 					squareId: object.id,
 					updatedAt: object.updatedAt && object.updatedAt,
 				};

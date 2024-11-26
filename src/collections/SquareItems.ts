@@ -28,6 +28,16 @@ export const SquareItems = (options: SquarePluginOptions): CollectionConfig => (
 			required: true,
 		},
 		{
+			name: 'squareCategoryId',
+			type: 'text',
+			admin: {
+				hidden: true,
+				readOnly: true,
+			},
+			label: 'Square Category ID',
+			required: true,
+		},
+		{
 			name: 'name',
 			type: 'text',
 			admin: {
@@ -67,14 +77,12 @@ export const SquareItems = (options: SquarePluginOptions): CollectionConfig => (
 			label: 'Display',
 		},
 		{
-			name: 'category',
-			type: 'relationship',
+			name: 'categoryName',
+			type: 'text',
 			admin: {
 				readOnly: true,
 			},
-			hasMany: false,
-			label: 'Category',
-			relationTo: 'square-categories',
+			label: 'Category Name',
 		},
 	],
 	hooks: {

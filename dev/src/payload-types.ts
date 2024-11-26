@@ -127,6 +127,7 @@ export interface SquareCategory {
 export interface SquareItem {
   id: string;
   squareId: string;
+  squareCategoryId: string;
   name: string;
   imageIds?:
     | {
@@ -135,7 +136,7 @@ export interface SquareItem {
     | null;
   updatedAt: string;
   display?: boolean | null;
-  category?: (string | null) | SquareCategory;
+  categoryName?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
