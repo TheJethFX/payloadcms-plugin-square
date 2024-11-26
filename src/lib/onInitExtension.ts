@@ -30,25 +30,23 @@ export async function syncCategories(payload: Payload, options: SquarePluginOpti
 				},
 			});
 
+			const categoryData = {
+				squareId: object.id,
+				name: object.categoryData?.name || undefined,
+				updatedAt: object.updatedAt && object.updatedAt,
+			};
+
 			if (existing.docs.length > 0) {
 				await payload.update({
 					collection: 'square-categories',
 					id: existing.docs[0].id,
-					data: {
-						squareId: object.id,
-						name: object.categoryData?.name || undefined,
-						updatedAt: object.updatedAt && object.updatedAt,
-					},
+					data: categoryData,
 					overrideAccess: true,
 				});
 			} else {
 				await payload.create({
 					collection: 'square-categories',
-					data: {
-						squareId: object.id,
-						name: object.categoryData?.name,
-						updatedAt: object.updatedAt && object.updatedAt,
-					},
+					data: categoryData,
 					overrideAccess: true,
 				});
 			}
