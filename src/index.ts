@@ -1,2 +1,2 @@
-export { myPlugin } from './plugin.js'
-export type { MyPluginOptions } from './types.js'
+export { squarePlugin } from './plugin.js';
+export type { SquarePluginOptions } from './types.js';

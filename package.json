@@ -1,9 +1,9 @@
 {
-  "name": "payload-plugin-template",
-  "version": "3.0.0-beta.0",
+  "name": "@jeths/payload-plugin-square",
+  "version": "0.0.1",
   "homepage:": "https://payloadcms.com",
-  "description": "Payload plugin template",
-  "author": "dev@payloadcms.com",
+  "description": "Payload plugin for Square",
+  "author": "william@jeth.dev",
   "license": "MIT",
   "files": [
     "dist",
@@ -32,7 +32,8 @@
   "dependencies": {
     "@payloadcms/ui": "3.0.0-beta.111",
     "react": "19.0.0-rc-3edc000d-20240926",
-    "react-dom": "19.0.0-rc-3edc000d-20240926"
+    "react-dom": "19.0.0-rc-3edc000d-20240926",
+    "square": "^39.0.0"
   },
   "devDependencies": {
     "@payloadcms/eslint-config": "3.0.0-beta.97",

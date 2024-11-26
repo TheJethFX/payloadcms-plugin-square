@@ -14,6 +14,8 @@ export interface Config {
     users: User;
     pages: Page;
     media: Media;
+    'square-categories': SquareCategory;
+    'square-items': SquareItem;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -108,6 +110,30 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "square-categories".
+ */
+export interface SquareCategory {
+  id: string;
+  squareId: string;
+  name: string;
+  updatedAt: string;
+  display?: boolean | null;
+  items?: (string | SquareItem)[] | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "square-items".
+ */
+export interface SquareItem {
+  id: string;
+  squareId: string;
+  name: string;
+  updatedAt: string;
+  display?: boolean | null;
+  category?: (string | null) | SquareCategory;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -124,6 +150,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'square-categories';
+        value: string | SquareCategory;
+      } | null)
+    | ({
+        relationTo: 'square-items';
+        value: string | SquareItem;
       } | null);
   globalSlug?: string | null;
   user: {
