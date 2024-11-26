@@ -1,6 +1,12 @@
-import { Environment } from 'square';
+import type { Environment } from 'square';
 
 export interface SquarePluginOptions {
+	/**
+	 * Square API Access Token
+	 * @required
+	 */
+	accessToken: string;
+
 	/**
 	 * Enable or disable debug mode
 	 * @default false
@@ -14,12 +20,6 @@ export interface SquarePluginOptions {
 	enabled?: boolean;
 
 	/**
-	 * Square API Access Token
-	 * @required
-	 */
-	accessToken: string;
-
-	/**
 	 * Square API Environment
 	 * @default Environment.Sandbox
 	 */
@@ -27,8 +27,8 @@ export interface SquarePluginOptions {
 }
 
 export interface SquareCategory {
-	squareId: string;
 	name: string;
+	squareId: string;
 	type: string;
 }
 

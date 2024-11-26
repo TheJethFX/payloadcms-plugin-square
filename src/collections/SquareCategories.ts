@@ -1,62 +1,63 @@
-import { CollectionConfig } from 'payload';
+import type { CollectionConfig } from 'payload';
+
+import type { SquarePluginOptions } from '../types';
+
 import { syncCategories } from '../lib/onInitExtension';
-import { SquarePluginOptions } from '../types';
 
 export const SquareCategories = (options: SquarePluginOptions): CollectionConfig => ({
 	slug: 'square-categories',
-	admin: {
-		useAsTitle: 'name',
-		description: 'Categories synchronized from Square',
-	},
 	access: {
-		read: () => true,
 		create: () => false,
-		update: () => true,
 		delete: () => false,
+		read: () => true,
+		update: () => true,
+	},
+	admin: {
+		description: 'Categories synchronized from Square',
+		useAsTitle: 'name',
 	},
 	fields: [
 		{
 			name: 'squareId',
-			label: 'Square ID',
 			type: 'text',
-			required: true,
 			admin: {
 				readOnly: true,
 			},
+			label: 'Square ID',
+			required: true,
 		},
 		{
 			name: 'name',
-			label: 'Name',
 			type: 'text',
-			required: true,
 			admin: {
 				readOnly: true,
 			},
+			label: 'Name',
+			required: true,
 		},
 		{
 			name: 'updatedAt',
-			label: 'Updated At',
 			type: 'date',
-			required: true,
 			admin: {
 				readOnly: true,
 			},
+			label: 'Updated At',
+			required: true,
 		},
 		{
 			name: 'display',
-			label: 'Display',
 			type: 'checkbox',
 			defaultValue: true,
+			label: 'Display',
 		},
 		{
 			name: 'items',
-			label: 'Items',
 			type: 'relationship',
-			relationTo: 'square-items',
 			hasMany: true,
+			label: 'Items',
+			relationTo: 'square-items',
 		},
 	],
-	timestamps: false,
 	hooks: {
 		beforeRead: [
 			async ({ req }) => {
@@ -67,4 +68,5 @@ export const SquareCategories = (options: SquarePluginOptions): CollectionConfig
 			},
 		],
 	},
+	timestamps: false,
 });

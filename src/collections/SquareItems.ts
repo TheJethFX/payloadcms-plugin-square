@@ -1,81 +1,82 @@
-import { CollectionConfig } from 'payload';
-import { SquarePluginOptions } from '../types';
+import type { CollectionConfig } from 'payload';
+
+import type { SquarePluginOptions } from '../types';
+
 import { syncItems } from '../lib/onInitExtension';
 
 export const SquareItems = (options: SquarePluginOptions): CollectionConfig => ({
 	slug: 'square-items',
+	access: {
+		create: () => false,
+		delete: () => false,
+		read: () => true,
+		update: () => true,
+	},
 	admin: {
-		useAsTitle: 'name',
 		description: 'Items synchronized from Square',
 		hidden: true,
-	},
-	access: {
-		read: () => true,
-		create: () => false,
-		update: () => true,
-		delete: () => false,
+		useAsTitle: 'name',
 	},
 	fields: [
 		{
 			name: 'squareId',
-			label: 'Square ID',
 			type: 'text',
-			required: true,
 			admin: {
 				readOnly: true,
 			},
+			label: 'Square ID',
+			required: true,
 		},
 		{
 			name: 'name',
-			label: 'Name',
 			type: 'text',
-			required: true,
 			admin: {
 				readOnly: true,
 			},
+			label: 'Name',
+			required: true,
 		},
 		{
 			name: 'imageIds',
-			label: 'Image IDs',
 			type: 'array',
+			admin: {
+				readOnly: true,
+			},
 			fields: [
 				{
 					name: 'id',
-					label: 'ID',
 					type: 'text',
+					label: 'ID',
 				},
 			],
-			admin: {
-				readOnly: true,
-			},
+			label: 'Image IDs',
 		},
 		{
 			name: 'updatedAt',
-			label: 'Updated At',
 			type: 'date',
-			required: true,
 			admin: {
 				readOnly: true,
 			},
+			label: 'Updated At',
+			required: true,
 		},
 		{
 			name: 'display',
-			label: 'Display',
 			type: 'checkbox',
 			defaultValue: true,
+			label: 'Display',
 		},
 		{
 			name: 'category',
-			label: 'Category',
 			type: 'relationship',
-			relationTo: 'square-categories',
-			hasMany: false,
 			admin: {
 				readOnly: true,
 			},
+			hasMany: false,
+			label: 'Category',
+			relationTo: 'square-categories',
 		},
 	],
-	timestamps: false,
 	hooks: {
 		beforeRead: [
 			async ({ req }) => {
@@ -86,4 +87,5 @@ export const SquareItems = (options: SquarePluginOptions): CollectionConfig => (
 			},
 		],
 	},
+	timestamps: false,
 });

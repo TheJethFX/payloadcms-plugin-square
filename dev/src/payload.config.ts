@@ -1,10 +1,11 @@
+import { squarePlugin } from '@jeths/payload-plugin-square';
 import { mongooseAdapter } from '@payloadcms/db-mongodb';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import path from 'path';
 import { buildConfig } from 'payload';
 import { fileURLToPath } from 'url';
+
 import { testEmailAdapter } from './emailAdapter';
-import { squarePlugin } from '@jeths/payload-plugin-square';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -53,19 +54,8 @@ export default buildConfig({
 	db: mongooseAdapter({
 		url: process.env.DATABASE_URI || 'mongodb://127.0.0.1/plugin-development',
 	}),
-	email: testEmailAdapter,
 	editor: lexicalEditor(),
-	secret: process.env.PAYLOAD_SECRET || 'SOME_SECRET',
-	typescript: {
-		outputFile: path.resolve(dirname, 'payload-types.ts'),
-	},
-	plugins: [
-		squarePlugin({
-			debug: true,
-			enabled: true,
-			accessToken: process.env.SQUARE_ACCESS_TOKEN || '',
-		}),
-	],
+	email: testEmailAdapter,
 	async onInit(payload) {
 		const existingUsers = await payload.find({
 			collection: 'users',
@@ -81,5 +71,16 @@ export default buildConfig({
 				},
 			});
 		}
+	},
+	plugins: [
+		squarePlugin({
+			accessToken: process.env.SQUARE_ACCESS_TOKEN || '',
+			debug: true,
+			enabled: true,
+		}),
+	],
+	secret: process.env.PAYLOAD_SECRET || 'SOME_SECRET',
+	typescript: {
+		outputFile: path.resolve(dirname, 'payload-types.ts'),
 	},
 });

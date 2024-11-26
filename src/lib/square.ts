@@ -1,5 +1,7 @@
-import { ApiError, CatalogObject, type Error as SquareError } from 'square';
+import { ApiError, type CatalogObject, type Error as SquareError } from 'square';
+
 import type { SquarePluginOptions } from '../types.js';
+
 import { createSquareClient } from './client.js';
 
 export async function listSquareCatalog(options: SquarePluginOptions): Promise<CatalogObject[]> {

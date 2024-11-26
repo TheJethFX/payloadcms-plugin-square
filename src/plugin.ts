@@ -1,11 +1,11 @@
 import type { Config } from 'payload';
-import type { SquarePluginOptions } from './types.js';
-import { SquareCategories } from './collections/SquareCategories.js';
 
-import { onInitExtension } from './lib/onInitExtension.js';
-import { listCategoriesHandler } from './handlers/categories.js';
-import { create } from 'domain';
+import type { SquarePluginOptions } from './types.js';
+
+import { SquareCategories } from './collections/SquareCategories.js';
 import { SquareItems } from './collections/SquareItems.js';
+import { listCategoriesHandler } from './handlers/categories.js';
+import { onInitExtension } from './lib/onInitExtension.js';
 
 export const squarePlugin =
 	(pluginOptions: SquarePluginOptions) =>
@@ -64,9 +64,9 @@ export const squarePlugin =
 		config.endpoints = [
 			...(config.endpoints || []),
 			{
-				path: '/square/categories',
-				method: 'get',
 				handler: listCategoriesHandler(pluginOptions),
+				method: 'get',
+				path: '/square/categories',
 			},
 		];
 
@@ -85,7 +85,7 @@ export const squarePlugin =
 				await incomingConfig.onInit(payload);
 			}
 			// Add additional onInit code by using the onInitExtension function
-			onInitExtension(pluginOptions, payload);
+			await onInitExtension(pluginOptions, payload);
 		};
 
 		return config;

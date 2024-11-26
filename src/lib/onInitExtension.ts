@@ -1,5 +1,7 @@
-import { Payload } from 'payload';
-import { SquarePluginOptions } from '../types.js';
+import type { Payload } from 'payload';
+
+import type { SquarePluginOptions } from '../types.js';
+
 import { listSquareCatalog } from './square.js';
 
 export async function syncCategories(payload: Payload, options: SquarePluginOptions) {
@@ -31,15 +33,15 @@ export async function syncCategories(payload: Payload, options: SquarePluginOpti
 			});
 
 			const categoryData = {
-				squareId: object.id,
 				name: object.categoryData?.name || undefined,
+				squareId: object.id,
 				updatedAt: object.updatedAt && object.updatedAt,
 			};
 
 			if (existing.docs.length > 0) {
 				await payload.update({
-					collection: 'square-categories',
 					id: existing.docs[0].id,
+					collection: 'square-categories',
 					data: categoryData,
 					overrideAccess: true,
 				});
@@ -101,20 +103,20 @@ export async function syncItems(payload: Payload, options: SquarePluginOptions) 
 				});
 
 				const itemData = {
-					squareId: object.id,
 					name: object.itemData?.name || undefined,
+					category: categories.docs[0]?.id,
 					imageIds:
 						object.itemData?.imageIds?.map((value) => {
 							return { id: value };
 						}) || [],
-					category: categories.docs[0]?.id,
+					squareId: object.id,
 					updatedAt: object.updatedAt && object.updatedAt,
 				};
 
 				if (existing.docs.length > 0) {
 					await payload.update({
-						collection: 'square-items',
 						id: existing.docs[0].id,
+						collection: 'square-items',
 						data: itemData,
 						overrideAccess: true,
 					});

@@ -1,6 +1,8 @@
 import type { Server } from 'http'
+
 import mongoose from 'mongoose'
 import payload from 'payload'
+
 import { start } from './src/server'
 
 describe('Plugin tests', () => {
