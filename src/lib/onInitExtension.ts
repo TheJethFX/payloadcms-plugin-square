@@ -36,7 +36,7 @@ export async function syncCategories(payload: Payload, options: SquarePluginOpti
 					id: existing.docs[0].id,
 					data: {
 						squareId: object.id,
-						name: object.categoryData?.name,
+						name: object.categoryData?.name || undefined,
 						updatedAt: object.updatedAt && object.updatedAt,
 					},
 					overrideAccess: true,
@@ -104,8 +104,11 @@ export async function syncItems(payload: Payload, options: SquarePluginOptions) 
 
 				const itemData = {
 					squareId: object.id,
-					name: object.itemData?.name,
-					description: object.itemData?.description,
+					name: object.itemData?.name || undefined,
+					imageIds:
+						object.itemData?.imageIds?.map((value) => {
+							return { id: value };
+						}) || [],
 					category: categories.docs[0]?.id,
 					updatedAt: object.updatedAt && object.updatedAt,
 				};

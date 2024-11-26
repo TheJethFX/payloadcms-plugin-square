@@ -128,6 +128,11 @@ export interface SquareItem {
   id: string;
   squareId: string;
   name: string;
+  imageIds?:
+    | {
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   display?: boolean | null;
   category?: (string | null) | SquareCategory;

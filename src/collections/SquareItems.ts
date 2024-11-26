@@ -35,6 +35,21 @@ export const SquareItems = (options: SquarePluginOptions): CollectionConfig => (
 			},
 		},
 		{
+			name: 'imageIds',
+			label: 'Image IDs',
+			type: 'array',
+			fields: [
+				{
+					name: 'id',
+					label: 'ID',
+					type: 'text',
+				},
+			],
+			admin: {
+				readOnly: true,
+			},
+		},
+		{
 			name: 'updatedAt',
 			label: 'Updated At',
 			type: 'date',
