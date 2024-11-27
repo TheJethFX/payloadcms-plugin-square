@@ -6,8 +6,8 @@ import { listSquareCatalog } from './square.js';
 
 export async function syncCategories(payload: Payload, options: SquarePluginOptions) {
 	try {
-		const categories = await listSquareCatalog(options).then((data) =>
-			data.filter((object) => object.type === 'CATEGORY'),
+		const categories = await listSquareCatalog(options).then(
+			(data) => data?.filter((object) => object.type === 'CATEGORY') ?? [],
 		);
 		const squareCategoryIds = categories.map((cat) => cat.id);
 
@@ -25,11 +25,7 @@ export async function syncCategories(payload: Payload, options: SquarePluginOpti
 		for (const object of categories) {
 			const existing = await payload.find({
 				collection: 'square-categories',
-				where: {
-					squareId: {
-						equals: object.id,
-					},
-				},
+				where: { squareId: { equals: object.id } },
 			});
 
 			const categoryData = {
@@ -62,8 +58,8 @@ export async function syncCategories(payload: Payload, options: SquarePluginOpti
 
 export async function syncItems(payload: Payload, options: SquarePluginOptions) {
 	try {
-		const items = await listSquareCatalog(options).then((data) =>
-			data.filter((object) => object.type === 'ITEM'),
+		const items = await listSquareCatalog(options).then(
+			(data) => data?.filter((object) => object.type === 'ITEM') ?? [],
 		);
 		const squareItemIds = items.map((item) => item.id);
 
