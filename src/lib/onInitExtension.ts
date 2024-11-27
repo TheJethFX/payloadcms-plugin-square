@@ -138,12 +138,14 @@ export async function onInitExtension(
 	options: SquarePluginOptions,
 	payload: Payload,
 ): Promise<void> {
-	try {
-		await syncCategories(payload, options);
-		await syncItems(payload, options);
-	} catch (error) {
-		if (options.debug) {
-			console.error('Failed to fetch Square catalog:', error);
+	if (options.enabled) {
+		try {
+			await syncCategories(payload, options);
+			await syncItems(payload, options);
+		} catch (error) {
+			if (options.debug) {
+				console.error('Failed to fetch Square catalog:', error);
+			}
 		}
 	}
 }
