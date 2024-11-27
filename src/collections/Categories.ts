@@ -4,7 +4,7 @@ import type { SquarePluginOptions } from '../types';
 
 import { syncCategories } from '../lib/onInitExtension';
 
-export const SquareCategories = (options: SquarePluginOptions): CollectionConfig => ({
+export const Categories = (options: SquarePluginOptions): CollectionConfig => ({
 	slug: 'square-categories',
 	access: {
 		create: () => false,
@@ -13,7 +13,8 @@ export const SquareCategories = (options: SquarePluginOptions): CollectionConfig
 		update: () => true,
 	},
 	admin: {
-		description: 'Categories synchronized from Square',
+		description: 'Categories synchronized from Square.',
+		group: 'Square',
 		useAsTitle: 'name',
 	},
 	fields: [
@@ -67,6 +68,10 @@ export const SquareCategories = (options: SquarePluginOptions): CollectionConfig
 				}
 			},
 		],
+	},
+	labels: {
+		plural: 'Categories',
+		singular: 'Category',
 	},
 	timestamps: false,
 });

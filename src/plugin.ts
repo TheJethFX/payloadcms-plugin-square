@@ -2,8 +2,8 @@ import type { Config } from 'payload';
 
 import type { SquarePluginOptions } from './types.js';
 
-import { SquareCategories } from './collections/SquareCategories.js';
-import { SquareItems } from './collections/SquareItems.js';
+import { Categories } from './collections/Categories.js';
+import { Items } from './collections/Items.js';
 import { listCategoriesHandler } from './handlers/categories.js';
 import { onInitExtension } from './lib/onInitExtension.js';
 
@@ -39,8 +39,8 @@ export const squarePlugin =
 
 		config.collections = [
 			...(config.collections || []),
-			SquareCategories(pluginOptions),
-			SquareItems(pluginOptions),
+			Categories(pluginOptions),
+			Items(pluginOptions),
 		];
 
 		config.collections = (config.collections || []).map((collection) => {

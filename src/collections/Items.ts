@@ -4,7 +4,7 @@ import type { SquarePluginOptions } from '../types';
 
 import { syncItems } from '../lib/onInitExtension';
 
-export const SquareItems = (options: SquarePluginOptions): CollectionConfig => ({
+export const Items = (options: SquarePluginOptions): CollectionConfig => ({
 	slug: 'square-items',
 	access: {
 		create: () => false,
@@ -13,8 +13,8 @@ export const SquareItems = (options: SquarePluginOptions): CollectionConfig => (
 		update: () => true,
 	},
 	admin: {
-		description: 'Items synchronized from Square',
-		hidden: true,
+		description: 'Items synchronized from Square.',
+		group: 'Square',
 		useAsTitle: 'name',
 	},
 	fields: [
@@ -94,6 +94,10 @@ export const SquareItems = (options: SquarePluginOptions): CollectionConfig => (
 				}
 			},
 		],
+	},
+	labels: {
+		plural: 'Items',
+		singular: 'Item',
 	},
 	timestamps: false,
 });
