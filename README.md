@@ -36,9 +36,9 @@ export default {
 
 ## Contributing
 
-If you want to contribute to this project, please read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+If you want to contribute to this project, please read the [CONTRIBUTING](./CONTRIBUTING.md) file.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 ```
