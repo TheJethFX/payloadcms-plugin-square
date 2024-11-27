@@ -10,6 +10,13 @@
 		"LICENSE.md",
 		"README.md"
 	],
+	"keywords": [
+		"payload",
+		"cms",
+		"plugin",
+		"square",
+		"ecommerce"
+	],
 	"main": "./src/index.ts",
 	"types": "./src/index.ts",
 	"type": "module",
