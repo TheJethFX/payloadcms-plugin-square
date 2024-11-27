@@ -3,7 +3,7 @@
   "version": "0.0.1-beta.1",
   "homepage:": "https://payloadcms.com",
   "description": "Payload plugin to integrate with Square.",
-  "author": "william@jeth.dev",
+  "author": "Jeth",
   "license": "MIT",
   "files": [
     "dist",
