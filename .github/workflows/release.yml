@@ -1,15 +1,16 @@
 name: Build
 
 on:
-    pull_request:
-        types:
-            - opened
-            - reopened
-            - synchronize
     push:
         branches:
             - main
 			- next
+
+permissions:
+	contents: write
+	issues: write
+	pull-requests: write
+
 
 env:
     NODE_VERSION: 22.11.0
