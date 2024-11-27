@@ -1,6 +1,15 @@
 root = true
 
+# All Files
 [*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Web Files
+[*.{htm,html,js,jsm,ts,tsx,cjs,cts,ctsx,mjs,mts,mtsx,css,sass,scss,less,pcss,svg,vue}]
 indent_style = tab
 indent_size = 4
 charset = utf-8
@@ -9,11 +18,14 @@ insert_final_newline = true
 end_of_line = lf
 max_line_length = null
 
-[*.yml]
-indent_style = tab
+# YAML Files
+[*.{yml,yaml}]
 indent_size = 2
-charset = utf-8
-trim_trailing_whitespace = true
-insert_final_newline = true
-end_of_line = lf
-max_line_length = null
+
+# Markdown Files
+[*.{md,mdx}]
+trim_trailing_whitespace = false
+
+# JSON Files
+[*.{json,json5,webmanifest}]
+indent_size = 2
