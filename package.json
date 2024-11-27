@@ -1,8 +1,8 @@
 {
   "name": "@jeths/payload-plugin-square",
-  "version": "0.0.1",
+  "version": "0.0.1-beta.1",
   "homepage:": "https://payloadcms.com",
-  "description": "Payload plugin for Square",
+  "description": "Payload plugin to integrate with Square.",
   "author": "william@jeth.dev",
   "license": "MIT",
   "files": [
