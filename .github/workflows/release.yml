@@ -54,6 +54,8 @@ jobs:
         name: Build package
         env:
           DO_NOT_TRACK: 1 # Disable Turbopack telemetry
+          NEXT_TELEMETRY_DISABLED: 1 # Disable Next.js telemetry
+          SQUARE_ACCESS_TOKEN: square-access-token # Square access token
 
       - run: pnpm build:app
         name: Build dev dir app
