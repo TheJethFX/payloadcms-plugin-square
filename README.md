@@ -17,7 +17,7 @@ npm install payloadcms-plugin-square
 
 ```typescript
 // In your Payload config file (payload.config.ts)
-import { squarePlugin } from 'payload-plugin-square';
+import { squarePlugin } from 'payloadcms-plugin-square';
 
 export default {
 	plugins: [
