@@ -17,6 +17,14 @@
 		"square",
 		"ecommerce"
 	],
+	"bugs": {
+		"url": "https://github.com/TheJethFX/payloadcms-plugin-square/issues"
+	},
+	"config": {
+		"commitizen": {
+			"path": "cz-conventional-changelog"
+		}
+	},
 	"main": "./src/index.ts",
 	"types": "./src/index.ts",
 	"type": "module",
@@ -24,6 +32,7 @@
 		"build": "tsc --project tsconfig.json",
 		"build:all": "pnpm build && pnpm -C dev build",
 		"build:app": "pnpm -C dev build",
+		"commit": "git-cz",
 		"clean": "rimraf {dist,*.tsbuildinfo,package}",
 		"copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/",
 		"dev": "pnpm -C dev dev",
@@ -45,9 +54,12 @@
 	},
 	"devDependencies": {
 		"@payloadcms/eslint-config": "3.0.0-beta.97",
+		"@semantic-release/changelog": "^6.0.3",
+		"@semantic-release/git": "^10.0.1",
 		"@types/node": "22.7.5",
 		"@types/react": "npm:types-react@19.0.0-rc.1",
 		"@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+		"cz-conventional-changelog": "^3.3.0",
 		"copyfiles": "^2.4.1",
 		"next": "15.0.0-canary.173",
 		"payload": "3.0.0-beta.111",
