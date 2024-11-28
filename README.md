@@ -10,7 +10,7 @@ A plugin for [Payload](https://payloadcms.com) to connect [Square](https://squar
 ## Installation
 
 ```bash
-npm install payload-plugin-square
+npm install payloadcms-plugin-square
 ```
 
 ## Example Usage
