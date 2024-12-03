@@ -47,17 +47,16 @@
 		"semantic-release": "semantic-release"
 	},
 	"peerDependencies": {
-		"next": "15.0.0-canary.173",
-		"payload": "^3.0.0-beta.111"
-	},
-	"dependencies": {
-		"@payloadcms/ui": "3.0.0-beta.111",
-		"react": "19.0.0-rc-3edc000d-20240926",
-		"react-dom": "19.0.0-rc-3edc000d-20240926",
+		"@payloadcms/db-mongodb": "^3.2.2",
+		"@payloadcms/ui": "^3.2.2",
+		"next": "^15.0.3",
+		"payload": "^3.2.2",
+		"react": "^19.0.0 || ^19.0.0-rc-66855b96-20241106",
+		"react-dom": "^19.0.0 || ^19.0.0-rc-66855b96-20241106",
 		"square": "^39.0.0"
 	},
 	"devDependencies": {
-		"@payloadcms/eslint-config": "3.0.0-beta.97",
+		"@payloadcms/eslint-config": "3.0.0",
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/git": "^10.0.1",
 		"@types/node": "22.7.5",
@@ -65,10 +64,7 @@
 		"@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
 		"cz-conventional-changelog": "^3.3.0",
 		"copyfiles": "^2.4.1",
-		"next": "15.0.0-canary.173",
-		"payload": "3.0.0-beta.111",
-		"react": "19.0.0-rc-3edc000d-20240926",
-		"react-dom": "19.0.0-rc-3edc000d-20240926",
+		"next": "15.0.3",
 		"rimraf": "^6.0.1",
 		"semantic-release": "^24.2.0",
 		"typescript": "5.5.3"
