@@ -9,6 +9,11 @@
 		"type": "git",
 		"url": "git+https://github.com/TheJethFX/payloadcms-plugin-square.git"
 	},
+	"maintainers": [
+		{
+			"name": "Jeth"
+		}
+	],
 	"files": [
 		"dist",
 		"LICENSE.md",
