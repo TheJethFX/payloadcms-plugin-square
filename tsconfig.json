@@ -7,7 +7,7 @@
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"target": "es5",
 		"allowJs": true,
-		"jsx": "preserve",
+		"jsx": "react-jsx",
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
 		"sourceMap": true,
