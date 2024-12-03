@@ -3,6 +3,7 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import path from 'path';
 import { buildConfig } from 'payload';
 import { squarePlugin } from 'payloadcms-plugin-square';
+import { Environment } from 'square';
 import { fileURLToPath } from 'url';
 
 import { testEmailAdapter } from './emailAdapter';
@@ -77,6 +78,7 @@ export default buildConfig({
 			accessToken: process.env.SQUARE_ACCESS_TOKEN || '',
 			debug: true,
 			enabled: true,
+			environment: Environment.Production,
 		}),
 	],
 	secret: process.env.PAYLOAD_SECRET || 'SOME_SECRET',
