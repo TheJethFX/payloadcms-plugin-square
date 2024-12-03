@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-next.1](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.0.0...v1.1.0-next.1) (2024-12-03)
+
+
+### Bug Fixes
+
+* Migrate dev app to Payload ^3.2.2 ([f4b21f1](https://github.com/TheJethFX/payloadcms-plugin-square/commit/f4b21f11fa11c1ceb615c223a2717df9d89e6e6a))
+
+
+### Features
+
+* Document "environment" plugin option in README ([d9c2c03](https://github.com/TheJethFX/payloadcms-plugin-square/commit/d9c2c03502f4912bd68bdf2a8cd9e81927f372b7))
+
 # 1.0.0 (2024-11-28)
 
 
