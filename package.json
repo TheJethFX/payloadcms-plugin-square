@@ -1,6 +1,6 @@
 {
 	"name": "payloadcms-plugin-square",
-	"version": "1.0.0",
+	"version": "1.1.0-next.4",
 	"homepage": "https://github.com/TheJethFX/payloadcms-plugin-square",
 	"description": "Unofficial Square plugin for Payload",
 	"author": "Jeth",
@@ -9,6 +9,11 @@
 		"type": "git",
 		"url": "git+https://github.com/TheJethFX/payloadcms-plugin-square.git"
 	},
+	"maintainers": [
+		{
+			"name": "Jeth"
+		}
+	],
 	"files": [
 		"dist",
 		"LICENSE.md",
@@ -29,8 +34,8 @@
 			"path": "cz-conventional-changelog"
 		}
 	},
-	"main": "./src/index.ts",
-	"types": "./src/index.ts",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"type": "module",
 	"scripts": {
 		"build": "tsc --project tsconfig.json",
@@ -47,17 +52,16 @@
 		"semantic-release": "semantic-release"
 	},
 	"peerDependencies": {
-		"next": "15.0.0-canary.173",
-		"payload": "^3.0.0-beta.111"
-	},
-	"dependencies": {
-		"@payloadcms/ui": "3.0.0-beta.111",
-		"react": "19.0.0-rc-3edc000d-20240926",
-		"react-dom": "19.0.0-rc-3edc000d-20240926",
+		"@payloadcms/db-mongodb": "^3.3.0",
+		"@payloadcms/ui": "^3.3.0",
+		"next": "^15.0.3",
+		"payload": "^3.3.0",
+		"react": "^19.0.0 || ^19.0.0-rc-66855b96-20241106",
+		"react-dom": "^19.0.0 || ^19.0.0-rc-66855b96-20241106",
 		"square": "^39.0.0"
 	},
 	"devDependencies": {
-		"@payloadcms/eslint-config": "3.0.0-beta.97",
+		"@payloadcms/eslint-config": "3.0.0",
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/git": "^10.0.1",
 		"@types/node": "22.7.5",
@@ -65,10 +69,7 @@
 		"@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
 		"cz-conventional-changelog": "^3.3.0",
 		"copyfiles": "^2.4.1",
-		"next": "15.0.0-canary.173",
-		"payload": "3.0.0-beta.111",
-		"react": "19.0.0-rc-3edc000d-20240926",
-		"react-dom": "19.0.0-rc-3edc000d-20240926",
+		"next": "15.0.3",
 		"rimraf": "^6.0.1",
 		"semantic-release": "^24.2.0",
 		"typescript": "5.5.3"
@@ -81,22 +82,13 @@
 	},
 	"publishConfig": {
 		"access": "public",
-		"main": "./dist/index.js",
-		"registry": "https://registry.npmjs.org/",
-		"types": "./dist/index.d.ts",
-		"exports": {
-			".": {
-				"import": "./dist/index.js",
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.js"
-			}
-		}
+		"registry": "https://registry.npmjs.org/"
 	},
 	"exports": {
 		".": {
-			"import": "./src/index.ts",
-			"default": "./src/index.ts",
-			"types": "./src/index.ts"
+			"import": "./dist/index.js",
+			"types": "./dist/types/index.d.ts",
+			"default": "./dist/index.js"
 		}
 	}
 }

@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-next.4](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.1.0-next.3...v1.1.0-next.4) (2024-12-03)
+
+
+### Bug Fixes
+
+* bump Payload deps to ^3.3.0 ([2ac4dfa](https://github.com/TheJethFX/payloadcms-plugin-square/commit/2ac4dfaeee1130165a6ffdef870b0208e9f12d0e))
+
+# [1.1.0-next.3](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.1.0-next.2...v1.1.0-next.3) (2024-12-03)
+
+
+### Bug Fixes
+
+* use proper package exports ([922b103](https://github.com/TheJethFX/payloadcms-plugin-square/commit/922b1039f2a91f66f22ae22201f131b952c13895))
+
+# [1.1.0-next.2](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.1.0-next.1...v1.1.0-next.2) (2024-12-03)
+
+
+### Bug Fixes
+
+* set proper package "main" & "types" ([d5149b0](https://github.com/TheJethFX/payloadcms-plugin-square/commit/d5149b0ff017e848612400f94274ae12310c6b9c))
+
+# [1.1.0-next.1](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.0.0...v1.1.0-next.1) (2024-12-03)
+
+
+### Bug Fixes
+
+* Migrate dev app to Payload ^3.2.2 ([f4b21f1](https://github.com/TheJethFX/payloadcms-plugin-square/commit/f4b21f11fa11c1ceb615c223a2717df9d89e6e6a))
+
+
+### Features
+
+* Document "environment" plugin option in README ([d9c2c03](https://github.com/TheJethFX/payloadcms-plugin-square/commit/d9c2c03502f4912bd68bdf2a8cd9e81927f372b7))
+
 # 1.0.0 (2024-11-28)
 
 

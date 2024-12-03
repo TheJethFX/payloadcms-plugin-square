@@ -13,18 +13,26 @@ A plugin for [Payload](https://payloadcms.com) to connect [Square](https://squar
 npm install payloadcms-plugin-square
 ```
 
+Note that this plugin also requires the [Square Node.js SDK](https://developer.squareup.com/docs/sdks/nodejs/setup-project) to be installed in your project:
+  
+  ```bash
+  npm install square
+  ```
+
 ## Example Usage
 
 ```typescript
 // In your Payload config file (payload.config.ts)
 import { squarePlugin } from 'payloadcms-plugin-square';
+import { Environment } from 'square';
 
 export default {
 	plugins: [
 		squarePlugin({
 			accessToken: process.env.SQUARE_ACCESS_TOKEN,
 			debug: true,
-			enabled: true
+			enabled: true,
+      environment: Environment.Production,
 		}),
 	],
 };
@@ -37,6 +45,7 @@ export default {
 | `accessToken` | `string` | Yes      | Your Square access token. You can find this in your [Square Developer Dashboard](https://developer.squareup.com/apps). |
 | `debug`       | `boolean`| No       | If set to `true`, logs debug information to the console. Defaults to `false`.                           |
 | `enabled`     | `boolean`| No       | If set to `false`, the plugin will not run. Defaults to `true`.                                         |
+| `environment` | `Environment` | No | The Square API environment to use. Defaults to `Environment.Sandbox`. |
 
 
 ## Contributing
