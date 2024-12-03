@@ -13,7 +13,7 @@ A plugin for [Payload](https://payloadcms.com) to connect [Square](https://squar
 npm install payloadcms-plugin-square
 ```
 
-Note that this plugin also requires Square to be installed in your project:
+Note that this plugin also requires the Square Node.js SDK to be installed in your project:
   
   ```bash
   npm install square
