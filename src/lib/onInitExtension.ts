@@ -2,12 +2,12 @@ import type { Payload } from 'payload';
 
 import type { SquarePluginOptions } from '../types.js';
 
-import { listSquareCatalog } from './square.js';
+import { listSquareCatalogObjects } from './square.js';
 
 export async function syncCategories(payload: Payload, options: SquarePluginOptions) {
 	try {
-		const categories = await listSquareCatalog(options).then(
-			(data) => data?.filter((object) => object.type === 'CATEGORY') ?? [],
+		const categories = await listSquareCatalogObjects('CATEGORY', options).then(
+			(data) => data ?? [],
 		);
 		const squareCategoryIds = categories.map((cat) => cat.id);
 
@@ -58,9 +58,7 @@ export async function syncCategories(payload: Payload, options: SquarePluginOpti
 
 export async function syncItems(payload: Payload, options: SquarePluginOptions) {
 	try {
-		const items = await listSquareCatalog(options).then(
-			(data) => data?.filter((object) => object.type === 'ITEM') ?? [],
-		);
+		const items = await listSquareCatalogObjects('ITEM', options).then((data) => data ?? []);
 		const squareItemIds = items.map((item) => item.id);
 
 		// Delete items that don't exist in Square anymore
