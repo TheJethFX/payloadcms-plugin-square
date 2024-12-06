@@ -14,26 +14,23 @@ const handleSquareError = (error: unknown): never => {
 	throw error;
 };
 
-export async function listSquareCatalog(
+export async function listSquareCatalogObjects(
+	objectTypes: string | string[],
 	options: SquarePluginOptions,
 ): Promise<CatalogObject[] | undefined> {
 	const client = createSquareClient(options);
 	try {
-		const response = await client.catalogApi.listCatalog('', 'CATEGORY,ITEM');
-		return response.result.objects || [];
-	} catch (error) {
-		handleSquareError(error);
-	}
-}
+		if (!objectTypes.length) {
+			throw new Error('No Square object types provided.');
+		}
 
-export async function listSquareCategoriesItems(
-	options: SquarePluginOptions,
-	categoryIds: string[],
-): Promise<CatalogObject[] | undefined> {
-	const client = createSquareClient(options);
-	try {
-		const response = await client.catalogApi.searchCatalogItems({ categoryIds });
-		return response.result.items || [];
+		// This is what the Square API uses to paginate results, implement it if needed.
+		const cursor = '';
+
+		const types = Array.isArray(objectTypes) ? objectTypes.join(',') : objectTypes;
+		const response = await client.catalogApi.listCatalog(cursor, types);
+
+		return response.result.objects || [];
 	} catch (error) {
 		handleSquareError(error);
 	}

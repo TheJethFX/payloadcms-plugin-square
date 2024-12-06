@@ -1,1 +1,0 @@
-export { listCategoriesHandler } from './categories';

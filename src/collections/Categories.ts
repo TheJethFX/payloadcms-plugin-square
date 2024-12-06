@@ -1,10 +1,6 @@
 import type { CollectionConfig } from 'payload';
 
-import type { SquarePluginOptions } from '../types';
-
-import { syncCategories } from '../lib/onInitExtension';
-
-export const Categories = (options: SquarePluginOptions): CollectionConfig => ({
+export const Categories = (): CollectionConfig => ({
 	slug: 'square-categories',
 	access: {
 		create: () => false,
@@ -13,6 +9,20 @@ export const Categories = (options: SquarePluginOptions): CollectionConfig => ({
 		update: () => true,
 	},
 	admin: {
+		components: {
+			beforeList: [
+				{
+					path: 'payloadcms-plugin-square/client#RefreshButton',
+					serverProps: {
+						collection: {
+							slug: 'square-categories',
+							label: 'Categories',
+						},
+						label: 'Refresh Categories',
+					},
+				},
+			],
+		},
 		description: 'Categories synchronized from Square.',
 		group: 'Square',
 		useAsTitle: 'name',
@@ -54,21 +64,16 @@ export const Categories = (options: SquarePluginOptions): CollectionConfig => ({
 		{
 			name: 'items',
 			type: 'relationship',
+			filterOptions: ({ data }) => ({
+				squareCategoryId: {
+					equals: data?.squareId,
+				},
+			}),
 			hasMany: true,
 			label: 'Items',
 			relationTo: 'square-items',
 		},
 	],
-	hooks: {
-		beforeRead: [
-			async ({ req }) => {
-				if (req.user) {
-					// Only sync when accessed via admin panel
-					await syncCategories(req.payload, options);
-				}
-			},
-		],
-	},
 	labels: {
 		plural: 'Categories',
 		singular: 'Category',
