@@ -1,10 +1,6 @@
 import type { CollectionConfig } from 'payload';
 
-import type { SquarePluginOptions } from '../types';
-
-import { syncItems } from '../lib/onInitExtension';
-
-export const Items = (options: SquarePluginOptions): CollectionConfig => ({
+export const Items = (): CollectionConfig => ({
 	slug: 'square-items',
 	access: {
 		create: () => false,
@@ -13,6 +9,20 @@ export const Items = (options: SquarePluginOptions): CollectionConfig => ({
 		update: () => true,
 	},
 	admin: {
+		components: {
+			beforeList: [
+				{
+					path: 'payloadcms-plugin-square/client#RefreshButton',
+					serverProps: {
+						collection: {
+							slug: 'square-items',
+							label: 'Items',
+						},
+						label: 'Refresh Items',
+					},
+				},
+			],
+		},
 		description: 'Items synchronized from Square.',
 		group: 'Square',
 		useAsTitle: 'name',
@@ -85,16 +95,6 @@ export const Items = (options: SquarePluginOptions): CollectionConfig => ({
 			label: 'Category Name',
 		},
 	],
-	hooks: {
-		beforeRead: [
-			async ({ req }) => {
-				if (req.user) {
-					// Only sync when accessed via admin panel
-					await syncItems(req.payload, options);
-				}
-			},
-		],
-	},
 	labels: {
 		plural: 'Items',
 		singular: 'Item',
