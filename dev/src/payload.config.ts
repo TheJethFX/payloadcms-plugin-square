@@ -17,6 +17,9 @@ export default buildConfig({
 			email: 'dev@payloadcms.com',
 			password: 'test',
 		},
+		importMap: {
+			baseDir: path.resolve(dirname, 'src'),
+		},
 		user: 'users',
 	},
 	collections: [
