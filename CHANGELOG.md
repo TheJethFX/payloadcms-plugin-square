@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.1.0...v1.2.0) (2024-12-06)
+
+
+### Bug Fixes
+
+* Add "payload-plugin" keyword in package.json ([8a483bd](https://github.com/TheJethFX/payloadcms-plugin-square/commit/8a483bd336872a1801fe2192dd78f3f1036c3f70))
+* Update "author" values in package.json ([b506f6d](https://github.com/TheJethFX/payloadcms-plugin-square/commit/b506f6de722d2d52b5b894b6fd48e613d7988aad))
+
+
+### Features
+
+* Add refresh button in collections to refresh data from Square database ([0169972](https://github.com/TheJethFX/payloadcms-plugin-square/commit/01699724a498cfcee46e9a165ba5a0a47781ea2a))
+
 # [1.2.0-next.1](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.1.0...v1.2.0-next.1) (2024-12-06)
 
 
