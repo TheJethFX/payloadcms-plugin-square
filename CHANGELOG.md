@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-next.5](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.1.0-next.4...v1.1.0-next.5) (2024-12-06)
+
+
+### Features
+
+* Add refresh button in collections to refresh data from Square database ([0169972](https://github.com/TheJethFX/payloadcms-plugin-square/commit/01699724a498cfcee46e9a165ba5a0a47781ea2a))
+
 # [1.1.0-next.4](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.1.0-next.3...v1.1.0-next.4) (2024-12-03)
 
 
