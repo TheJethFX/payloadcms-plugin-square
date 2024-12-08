@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1-next.1](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.2.0...v1.2.1-next.1) (2024-12-08)
+
+
+### Bug Fixes
+
+* Update package exports ([872a06f](https://github.com/TheJethFX/payloadcms-plugin-square/commit/872a06f890272e848a56b3e0324a16dd41e68f71))
+
 # [1.2.0](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.1.0...v1.2.0) (2024-12-06)
 
 
