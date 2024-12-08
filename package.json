@@ -82,11 +82,11 @@
 		"access": "public",
 		"registry": "https://registry.npmjs.org/",
 		"main": "./dist/index.js",
-		"types": "./dist/index.d.ts",
+		"types": "./dist/types/index.d.ts",
 		"exports": {
 			".": {
 				"import": "./dist/index.js",
-				"types": "./dist/index.d.ts",
+				"types": "./dist/types/index.d.ts",
 				"default": "./dist/index.js"
 			},
 			"./client": {
