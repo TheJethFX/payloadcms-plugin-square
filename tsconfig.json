@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"composite": true,
-		"declarationDir": "./dist/types",
+		"declarationDir": "./dist",
 		"outDir": "./dist",
 		"rootDir": "./src",
 		"lib": ["dom", "dom.iterable", "esnext"],

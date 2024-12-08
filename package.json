@@ -86,7 +86,7 @@
 		"exports": {
 			".": {
 				"import": "./dist/index.js",
-				"types": "./dist/types/index.d.ts",
+				"types": "./dist/index.d.ts",
 				"default": "./dist/index.js"
 			},
 			"./client": {
