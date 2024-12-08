@@ -1,5 +1,4 @@
 'use client';
-import type { Payload } from 'payload';
 import type { FC } from 'react';
 
 import { Button, LoadingOverlay, toast, useConfig } from '@payloadcms/ui';
@@ -44,7 +43,8 @@ export const RefreshButtonClient: FC<RefreshButtonClientProps> = ({ collection, 
 				}
 				toast.success(`${collection.label} refreshed`);
 			});
-		} catch (error: unknown) {
+		} catch (error) {
+			// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 			toast.error(`Error refreshing ${collection.label}: ${error}`);
 			throw error;
 		} finally {
