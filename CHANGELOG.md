@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1-next.6](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.2.1-next.5...v1.2.1-next.6) (2024-12-09)
+
+
+### Bug Fixes
+
+* Add prepublish script to replace package exports with publishConfig ([0ee8c44](https://github.com/TheJethFX/payloadcms-plugin-square/commit/0ee8c44e22b2a8865a5b58b217e05e0bac9caad5))
+* Disable app build job (for now) ([fd47c3a](https://github.com/TheJethFX/payloadcms-plugin-square/commit/fd47c3ad46fe2da2e1bb65ee5231534f21e43a9f))
+* Update package exports ([9442d8e](https://github.com/TheJethFX/payloadcms-plugin-square/commit/9442d8e0991381e569f77b02ab8716c5f22b7df7))
+* Update package exports ([e62006a](https://github.com/TheJethFX/payloadcms-plugin-square/commit/e62006a2c3679503502433e99aa71d09cf7bcc68))
+* Update package imports ([615595d](https://github.com/TheJethFX/payloadcms-plugin-square/commit/615595d463a1100c23456ba664939737b9ff1dc4))
+* Update prepublish script to replace "main" and "index" fields ([aaaaa32](https://github.com/TheJethFX/payloadcms-plugin-square/commit/aaaaa323357c575bd0e311b0fbfc4c2eb59ef158))
+
 ## [1.2.1-next.5](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.2.1-next.4...v1.2.1-next.5) (2024-12-09)
 
 
