@@ -41,6 +41,7 @@
 	"types": "./src/index.ts",
 	"type": "module",
 	"scripts": {
+		"prepare": "node ./prepublish.cjs",
 		"build": "tsc --project tsconfig.json",
 		"build:all": "pnpm build && pnpm -C dev build",
 		"build:app": "pnpm -C dev build",
