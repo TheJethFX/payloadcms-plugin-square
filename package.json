@@ -83,7 +83,6 @@
 		"registry": "https://registry.npmjs.org/",
 		"main": "./dist/index.js",
 		"types": "./dist/types/index.d.ts",
-		"provenance": true,
 		"exports": {
 			".": {
 				"import": "./dist/index.js",
