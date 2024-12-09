@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1-next.5](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.2.1-next.4...v1.2.1-next.5) (2024-12-09)
+
+
+### Bug Fixes
+
+* Remove provenance from publishConfig ([d694815](https://github.com/TheJethFX/payloadcms-plugin-square/commit/d694815326912251f3d5fb9a5c36180c11f36e92))
+
 ## [1.2.1-next.4](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.2.1-next.3...v1.2.1-next.4) (2024-12-09)
 
 
