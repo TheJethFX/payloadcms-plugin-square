@@ -100,6 +100,7 @@ export async function syncItems(payload: Payload, options: SquarePluginOptions) 
 					name: object.itemData?.name || 'N/A',
 					categoryId: categories.docs[0]?.id.toString(),
 					categoryName: categories.docs[0]?.name || 'N/A',
+					display: !object.itemData?.isArchived,
 					imageIds:
 						object.itemData?.imageIds?.map((value) => {
 							return { id: value };
