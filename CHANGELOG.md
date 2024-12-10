@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1-next.7](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.2.1-next.6...v1.2.1-next.7) (2024-12-10)
+
+
+### Bug Fixes
+
+* Map Square items 'display' field according to 'isArchived' value ([b3df2b9](https://github.com/TheJethFX/payloadcms-plugin-square/commit/b3df2b9f62110b94ab10427b984a1ea34c2de7d7))
+
 ## [1.2.1-next.6](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.2.1-next.5...v1.2.1-next.6) (2024-12-09)
 
 
