@@ -1,4 +1,6 @@
-import { ApiError, type CatalogObject, type Error as SquareError } from 'square';
+import type { SearchCatalogObjectsResponse, Error as SquareError } from 'square';
+
+import { ApiError } from 'square';
 
 import type { SquarePluginOptions } from '../types.js';
 
@@ -17,7 +19,7 @@ const handleSquareError = (error: unknown): never => {
 export async function listSquareCatalogObjects(
 	objectTypes: string | string[],
 	options: SquarePluginOptions,
-): Promise<CatalogObject[] | undefined> {
+): Promise<SearchCatalogObjectsResponse | undefined> {
 	const client = createSquareClient(options);
 	try {
 		if (!objectTypes.length) {
@@ -28,9 +30,12 @@ export async function listSquareCatalogObjects(
 		const cursor = '';
 
 		const types = Array.isArray(objectTypes) ? objectTypes.join(',') : objectTypes;
-		const response = await client.catalogApi.listCatalog(cursor, types);
-
-		return response.result.objects || [];
+		const response = await client.catalogApi.searchCatalogObjects({
+			cursor,
+			includeRelatedObjects: true,
+			objectTypes: [types],
+		});
+		return response.result || [];
 	} catch (error) {
 		handleSquareError(error);
 	}

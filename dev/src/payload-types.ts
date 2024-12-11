@@ -145,9 +145,10 @@ export interface SquareItem {
   squareId: string;
   squareCategoryId: string;
   name: string;
-  imageIds?:
+  images?:
     | {
         id?: string | null;
+        url?: string | null;
       }[]
     | null;
   updatedAt: string;
@@ -285,10 +286,11 @@ export interface SquareItemsSelect<T extends boolean = true> {
   squareId?: T;
   squareCategoryId?: T;
   name?: T;
-  imageIds?:
+  images?:
     | T
     | {
         id?: T;
+        url?: T;
       };
   updatedAt?: T;
   display?: T;

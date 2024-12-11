@@ -57,7 +57,7 @@ export const Items = (): CollectionConfig => ({
 			required: true,
 		},
 		{
-			name: 'imageIds',
+			name: 'images',
 			type: 'array',
 			admin: {
 				readOnly: true,
@@ -68,8 +68,13 @@ export const Items = (): CollectionConfig => ({
 					type: 'text',
 					label: 'ID',
 				},
+				{
+					name: 'url',
+					type: 'text',
+					label: 'URL',
+				},
 			],
-			label: 'Image IDs',
+			label: 'Images',
 		},
 		{
 			name: 'updatedAt',

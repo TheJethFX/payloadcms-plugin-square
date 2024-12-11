@@ -6,9 +6,10 @@ import { listSquareCatalogObjects } from './square.js';
 
 export async function syncCategories(payload: Payload, options: SquarePluginOptions) {
 	try {
-		const categories = await listSquareCatalogObjects('CATEGORY', options).then(
-			(data) => data ?? [],
+		const response = await listSquareCatalogObjects('CATEGORY', options).then(
+			(data) => data ?? {},
 		);
+		const categories = response.objects ?? [];
 		const squareCategoryIds = categories.map((cat) => cat.id);
 
 		// Delete categories that don't exist in Square anymore
@@ -58,8 +59,16 @@ export async function syncCategories(payload: Payload, options: SquarePluginOpti
 
 export async function syncItems(payload: Payload, options: SquarePluginOptions) {
 	try {
-		const items = await listSquareCatalogObjects('ITEM', options).then((data) => data ?? []);
+		const response = await listSquareCatalogObjects('ITEM', options).then((data) => data ?? {});
+		const items = response.objects ?? [];
+		const relatedObjects = response.relatedObjects ?? [];
 		const squareItemIds = items.map((item) => item.id);
+
+		const imageUrlByIdMap = new Map<string, null | string | undefined>(
+			relatedObjects
+				.filter((item) => item.type === 'IMAGE')
+				.map((item) => [item.id, item.imageData?.url]),
+		);
 
 		// Delete items that don't exist in Square anymore
 		await payload.delete({
@@ -100,10 +109,10 @@ export async function syncItems(payload: Payload, options: SquarePluginOptions) 
 					name: object.itemData?.name || 'N/A',
 					categoryId: categories.docs[0]?.id.toString(),
 					categoryName: categories.docs[0]?.name || 'N/A',
-					display: !object.itemData?.isArchived,
-					imageIds:
+					display: !object.itemData?.isArchived || true,
+					images:
 						object.itemData?.imageIds?.map((value) => {
-							return { id: value };
+							return { id: value, url: imageUrlByIdMap.get(value) };
 						}) || [],
 					squareCategoryId,
 					squareId: object.id,
