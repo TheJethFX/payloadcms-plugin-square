@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-next.1](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.2.1-next.7...v1.3.0-next.1) (2024-12-11)
+
+
+### Features
+
+* Rename 'imageIds' to 'images' and update related structures for better clarity ([ebe50c9](https://github.com/TheJethFX/payloadcms-plugin-square/commit/ebe50c954cd28c61fb465cf5a070c64267b6c365))
+
 ## [1.2.1-next.7](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.2.1-next.6...v1.2.1-next.7) (2024-12-10)
 
 
