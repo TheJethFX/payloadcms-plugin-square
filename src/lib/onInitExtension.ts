@@ -105,9 +105,6 @@ export async function syncItems(payload: Payload, options: SquarePluginOptions) 
 						(v) => v.type === Square.CatalogObjectType.ItemVariation,
 					) as Square.CatalogObjectItemVariation[]) ?? [];
 				const mappedVariations = variations.map((variation) => {
-					if (variation) {
-						console.log('variation', variation);
-					}
 					return {
 						name: variation?.itemVariationData?.name || 'N/A',
 						display: variation?.isDeleted,
