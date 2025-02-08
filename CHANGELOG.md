@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-next.5](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.4...v1.3.0-next.5) (2025-02-08)
+
+
+### Bug Fixes
+
+* Map missing 'weight_unit' field for 'measurementUnit' ([02ce3bb](https://github.com/TheJethFX/payloadcms-plugin-square/commit/02ce3bbfea44cdbc2cf7051c01c377a6d53b987a))
+
 # [1.3.0-next.4](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.3...v1.3.0-next.4) (2025-02-08)
 
 
