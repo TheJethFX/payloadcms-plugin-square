@@ -1,6 +1,8 @@
-import type { CollectionConfig } from 'payload';
+import type { CollectionConfig, PayloadRequest } from 'payload';
+import { SquarePluginOptions } from '../types';
+import { syncCategories } from '../lib/onInitExtension';
 
-export const Categories = (): CollectionConfig => ({
+export const Categories = (pluginOptions: SquarePluginOptions): CollectionConfig => ({
 	slug: 'square-categories',
 	access: {
 		create: () => false,
@@ -27,6 +29,31 @@ export const Categories = (): CollectionConfig => ({
 		group: 'Square',
 		useAsTitle: 'name',
 	},
+	endpoints: [
+		{
+			path: '/refresh',
+			method: 'get',
+			handler: async (req: PayloadRequest) => {
+				const { payload } = req;
+
+				try {
+					// Add your Square API refresh logic here
+					await syncCategories(payload, pluginOptions);
+
+					return Response.json({
+						status: 200,
+						message: 'Categories refreshed successfully',
+					});
+				} catch (error: any) {
+					return Response.json({
+						status: 500,
+						message: 'Failed to refresh categories',
+						error: error.message,
+					});
+				}
+			},
+		},
+	],
 	fields: [
 		{
 			name: 'squareId',
@@ -63,15 +90,11 @@ export const Categories = (): CollectionConfig => ({
 		},
 		{
 			name: 'items',
-			type: 'relationship',
-			filterOptions: ({ data }) => ({
-				squareCategoryId: {
-					equals: data?.squareId,
-				},
-			}),
+			type: 'join',
+			collection: 'square-items',
 			hasMany: true,
 			label: 'Items',
-			relationTo: 'square-items',
+			on: 'category',
 		},
 	],
 	labels: {

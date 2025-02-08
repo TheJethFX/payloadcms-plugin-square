@@ -32,11 +32,9 @@ export const RefreshButtonClient: FC<RefreshButtonClientProps> = ({ collection, 
 	const handleRefresh = useCallback(async () => {
 		setIsLoading(true);
 		try {
-			return await fetch(`${baseUrl}?${searchParams.toString()}`, {
+			return await fetch(`/api/${collection.slug}/refresh`, {
+				method: 'GET',
 				credentials: 'include',
-				headers: {
-					'Content-Type': 'application/json',
-				},
 			}).then((response) => {
 				if (!response.ok) {
 					throw new Error(response.statusText);

@@ -73,9 +73,16 @@ export async function syncItems(payload: Payload, options: SquarePluginOptions) 
 		const relatedObjects = response.relatedObjects ?? [];
 		const squareItemIds = items.map((item) => item.id);
 
-		const imageUrlByIdMap = new Map<string, null | string | undefined>(
+		const imageUrlByIdMap = new Map(
 			relatedObjects
 				.filter((item) => item.type === 'IMAGE')
+				.map((item) => {
+					const image = mapSquareCatalogObjectToSquareImage(item);
+
+					return [image.squareId, image.url];
+				}),
+		);
+
 		const measurementUnitByIdMap = new Map(
 			relatedObjects
 				.filter((item) => item.type === 'MEASUREMENT_UNIT')

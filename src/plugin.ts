@@ -4,6 +4,7 @@ import type { SquarePluginOptions } from './types.js';
 
 import { Categories } from './collections/Categories.js';
 import { Items } from './collections/Items.js';
+import { ItemVariations } from './collections/ItemVariations.js';
 import { onInitExtension } from './lib/onInitExtension.js';
 
 export const squarePlugin =
@@ -36,7 +37,12 @@ export const squarePlugin =
 			throw new Error('Square Plugin: accessToken is required');
 		}
 
-		config.collections = [...(config.collections || []), Categories(), Items()];
+		config.collections = [
+			...(config.collections || []),
+			Categories(pluginOptions),
+			Items(pluginOptions),
+			ItemVariations(),
+		];
 
 		config.collections = (config.collections || []).map((collection) => {
 			const modifiedCollection = { ...collection };
