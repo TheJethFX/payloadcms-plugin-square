@@ -9,7 +9,6 @@ export const ItemVariations = (): CollectionConfig => ({
 		update: () => true,
 	},
 	admin: {
-		hidden: true,
 		components: {
 			beforeList: [
 				{
@@ -26,6 +25,7 @@ export const ItemVariations = (): CollectionConfig => ({
 		},
 		description: 'Item variations synchronized from Square.',
 		group: 'Square',
+		hidden: true,
 		useAsTitle: 'name',
 	},
 	fields: [
@@ -124,6 +124,11 @@ export const ItemVariations = (): CollectionConfig => ({
 					name: 'type',
 					type: 'text',
 					label: 'Type',
+				},
+				{
+					name: 'weightUnit',
+					type: 'text',
+					label: 'Weight Unit',
 				},
 				{
 					name: 'precision',

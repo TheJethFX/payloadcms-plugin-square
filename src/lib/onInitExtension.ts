@@ -1,10 +1,11 @@
 import type { Payload } from 'payload';
 
+import { Square } from 'square';
+
 import type { SquarePluginOptions } from '../types.js';
 
 import { mapSquareCatalogObjectToSquareImage } from '../utils/squareImageMapper.js';
 import { listSquareCatalogObjects } from './square.js';
-import { Square } from 'square';
 
 export async function syncCategories(payload: Payload, options: SquarePluginOptions) {
 	try {
@@ -93,6 +94,8 @@ export async function syncItems(payload: Payload, options: SquarePluginOptions) 
 							type: item.measurementUnitData?.measurementUnit?.type || 'N/A',
 							precision: Number(item.measurementUnitData?.precision),
 							squareId: item.id,
+							weightUnit:
+								item.measurementUnitData?.measurementUnit?.weightUnit || 'N/A',
 						},
 					];
 				}),
@@ -115,8 +118,8 @@ export async function syncItems(payload: Payload, options: SquarePluginOptions) 
 						measurementUnit: variation?.itemVariationData?.measurementUnitId
 							? measurementUnitByIdMap.get(
 									variation?.itemVariationData?.measurementUnitId,
-							  )
-							: { type: 'N/A', precision: 0, squareId: 'N/A' },
+								)
+							: { type: 'N/A', precision: 0, squareId: 'N/A', weightUnit: 'N/A' },
 						ordinal: variation?.itemVariationData?.ordinal || 0,
 						priceMoney: {
 							amount: Number(variation?.itemVariationData?.priceMoney?.amount || 0),
