@@ -94,6 +94,7 @@ export const Categories = (pluginOptions: SquarePluginOptions): CollectionConfig
 			hasMany: true,
 			label: 'Items',
 			on: 'category',
+			maxDepth: 3,
 		},
 	],
 	labels: {
