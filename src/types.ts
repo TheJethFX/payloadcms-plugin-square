@@ -1,4 +1,4 @@
-import type { Environment } from 'square';
+import type { SquareEnvironment } from 'square';
 
 export interface SquarePluginOptions {
 	/**
@@ -21,17 +21,19 @@ export interface SquarePluginOptions {
 
 	/**
 	 * Square API Environment
-	 * @default Environment.Sandbox
+	 * @default SquareEnvironment.Sandbox
 	 */
-	environment?: Environment;
+	environment?: SquareEnvironment;
 }
 
-export interface SquareCategory {
-	name: string;
+export interface SquareImage {
+	/**
+	 * The Square ID of the image.
+	 */
 	squareId: string;
-	type: string;
-}
 
-export interface CreateSquareCategory {
-	name: string;
+	/**
+	 * The URL of the image.
+	 */
+	url?: string;
 }

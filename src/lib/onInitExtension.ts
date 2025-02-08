@@ -2,14 +2,17 @@ import type { Payload } from 'payload';
 
 import type { SquarePluginOptions } from '../types.js';
 
+import { mapSquareCatalogObjectToSquareImage } from '../utils/squareImageMapper.js';
 import { listSquareCatalogObjects } from './square.js';
+import { Square } from 'square';
 
 export async function syncCategories(payload: Payload, options: SquarePluginOptions) {
 	try {
-		const response = await listSquareCatalogObjects('CATEGORY', options).then(
-			(data) => data ?? {},
-		);
-		const categories = response.objects ?? [];
+		const response = await listSquareCatalogObjects(
+			Square.CatalogObjectType.Category,
+			options,
+		).then((data) => data ?? {});
+		const categories: Square.CatalogObjectCategory[] = response.objects ?? [];
 		const squareCategoryIds = categories.map((cat) => cat.id);
 
 		// Delete categories that don't exist in Square anymore
@@ -31,7 +34,7 @@ export async function syncCategories(payload: Payload, options: SquarePluginOpti
 
 			const categoryData = {
 				name: object.categoryData?.name || 'N/A',
-				squareId: object.id,
+				squareId: object.id || 'N/A',
 				updatedAt: object.updatedAt && object.updatedAt,
 			};
 
@@ -59,8 +62,14 @@ export async function syncCategories(payload: Payload, options: SquarePluginOpti
 
 export async function syncItems(payload: Payload, options: SquarePluginOptions) {
 	try {
-		const response = await listSquareCatalogObjects('ITEM', options).then((data) => data ?? {});
-		const items = response.objects ?? [];
+		const response = await listSquareCatalogObjects(
+			Square.CatalogObjectType.Item,
+			options,
+		).then((data) => data ?? {});
+		const items =
+			(response.objects?.filter(
+				(obj) => obj.type === 'ITEM',
+			) as Square.CatalogObjectItem[]) || [];
 		const relatedObjects = response.relatedObjects ?? [];
 		const squareItemIds = items.map((item) => item.id);
 
@@ -129,7 +138,7 @@ export async function syncItems(payload: Payload, options: SquarePluginOptions) 
 
 		// Update or create items
 		for (const object of items) {
-			const squareCategoryId = object.itemData?.reportingCategory
+			const squareCategoryId = object.itemData?.reportingCategory?.id
 				? object.itemData.reportingCategory.id
 				: null;
 
@@ -154,16 +163,14 @@ export async function syncItems(payload: Payload, options: SquarePluginOptions) 
 
 				const itemData = {
 					name: object.itemData?.name || 'N/A',
+					category: categories.docs[0] || null,
 					categoryId: categories.docs[0]?.id.toString(),
 					categoryName: categories.docs[0]?.name || 'N/A',
 					display: !object.itemData?.isArchived || true,
-					images:
-						object.itemData?.imageIds?.map((value) => {
-							return { id: value, url: imageUrlByIdMap.get(value) };
-						}) || [],
 					squareCategoryId,
 					squareId: object.id,
 					updatedAt: object.updatedAt && object.updatedAt,
+					variations: variationsByItemIdMap.get(object.id) || [],
 				};
 
 				if (existing.docs.length > 0) {
