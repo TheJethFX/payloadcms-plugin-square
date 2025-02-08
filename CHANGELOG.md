@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-next.4](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.3...v1.3.0-next.4) (2025-02-08)
+
+
+### Bug Fixes
+
+* Set maxDepth to 3 for Categories collection ([1e5466c](https://github.com/TheJethFX/payloadcms-plugin-square/commit/1e5466cbe6c8648f22bd6ff75a61af935cfe5af1))
+
 # [1.3.0-next.3](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.2...v1.3.0-next.3) (2025-02-08)
 
 
