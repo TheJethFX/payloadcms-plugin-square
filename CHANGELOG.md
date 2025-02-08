@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-next.2](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.1...v1.3.0-next.2) (2025-02-08)
+
+
+### Bug Fixes
+
+* Actually refresh Square collections ([f7ff65d](https://github.com/TheJethFX/payloadcms-plugin-square/commit/f7ff65d694d330468ec4d692d16c0e116ed2d130))
+
+
+### Features
+
+* Display item variations ([3786ec4](https://github.com/TheJethFX/payloadcms-plugin-square/commit/3786ec44e2ca679aa6015fa7d7284d8361bdb535))
+* Migrate to Square SDK Node.js v40 ([a4105a8](https://github.com/TheJethFX/payloadcms-plugin-square/commit/a4105a80e5ad0d287cc97c481167f0cd606ca6a8))
+
 # [1.3.0-next.1](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.2.1-next.7...v1.3.0-next.1) (2024-12-11)
 
 
