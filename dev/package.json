@@ -16,13 +16,13 @@
 		"generate:importmap": "payload generate:importmap"
 	},
 	"dependencies": {
-		"@payloadcms/db-mongodb": "^3.5.0",
-		"@payloadcms/db-postgres": "^3.5.0",
-		"@payloadcms/next": "^3.5.0",
-		"@payloadcms/richtext-lexical": "^3.5.0",
-		"@payloadcms/ui": "^3.5.0",
-		"next": "15.0.3",
-		"payload": "^3.5.0",
+		"@payloadcms/db-mongodb": "^3.22.0",
+		"@payloadcms/db-postgres": "^3.22.0",
+		"@payloadcms/next": "^3.22.0",
+		"@payloadcms/richtext-lexical": "^3.22.0",
+		"@payloadcms/ui": "^3.22.0",
+		"next": "15.1.6",
+		"payload": "^3.22.0",
 		"payloadcms-plugin-square": "workspace:*",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"
@@ -31,6 +31,6 @@
 		"copyfiles": "^2.4.1",
 		"cross-env": "^7.0.3",
 		"dotenv": "^8.2.0",
-		"typescript": "5.5.3"
+		"typescript": "5.7.3"
 	}
 }
