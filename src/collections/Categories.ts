@@ -37,7 +37,6 @@ export const Categories = (pluginOptions: SquarePluginOptions): CollectionConfig
 				const { payload } = req;
 
 				try {
-					// Add your Square API refresh logic here
 					await syncCategories(payload, pluginOptions);
 
 					return Response.json({

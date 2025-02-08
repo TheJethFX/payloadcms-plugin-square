@@ -39,7 +39,6 @@ export const Items = (pluginOptions: SquarePluginOptions): CollectionConfig => (
 				const { payload } = req;
 
 				try {
-					// Add your Square API refresh logic here
 					await syncItems(payload, pluginOptions);
 
 					return Response.json({
