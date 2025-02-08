@@ -67,7 +67,54 @@ export async function syncItems(payload: Payload, options: SquarePluginOptions) 
 		const imageUrlByIdMap = new Map<string, null | string | undefined>(
 			relatedObjects
 				.filter((item) => item.type === 'IMAGE')
-				.map((item) => [item.id, item.imageData?.url]),
+		const measurementUnitByIdMap = new Map(
+			relatedObjects
+				.filter((item) => item.type === 'MEASUREMENT_UNIT')
+				.map((item) => {
+					return [
+						item.id,
+						{
+							type: item.measurementUnitData?.measurementUnit?.type || 'N/A',
+							precision: Number(item.measurementUnitData?.precision),
+							squareId: item.id,
+						},
+					];
+				}),
+		);
+
+		const variationsByItemIdMap = new Map(
+			items.map((item) => {
+				const variations =
+					(item.itemData?.variations?.filter(
+						(v) => v.type === Square.CatalogObjectType.ItemVariation,
+					) as Square.CatalogObjectItemVariation[]) ?? [];
+				const mappedVariations = variations.map((variation) => {
+					if (variation) {
+						console.log('variation', variation);
+					}
+					return {
+						name: variation?.itemVariationData?.name || 'N/A',
+						display: variation?.isDeleted,
+						images:
+							variation?.itemVariationData?.imageIds?.map((value) => {
+								return { squareId: value, url: imageUrlByIdMap.get(value) };
+							}) || [],
+						measurementUnit: variation?.itemVariationData?.measurementUnitId
+							? measurementUnitByIdMap.get(
+									variation?.itemVariationData?.measurementUnitId,
+							  )
+							: { type: 'N/A', precision: 0, squareId: 'N/A' },
+						ordinal: variation?.itemVariationData?.ordinal || 0,
+						priceMoney: {
+							amount: Number(variation?.itemVariationData?.priceMoney?.amount || 0),
+							currency: variation?.itemVariationData?.priceMoney?.currency || 'CAD',
+						},
+						pricingType: variation?.itemVariationData?.pricingType || 'FIXED_PRICING',
+						squareId: variation.itemVariationData?.itemId || 'N/A',
+					};
+				});
+				return [item.id, mappedVariations];
+			}),
 		);
 
 		// Delete items that don't exist in Square anymore

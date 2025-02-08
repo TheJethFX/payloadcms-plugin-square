@@ -1,6 +1,10 @@
-import type { CollectionConfig } from 'payload';
+import type { CollectionConfig, PayloadRequest } from 'payload';
 
-export const Items = (): CollectionConfig => ({
+import { ItemVariations } from './ItemVariations';
+import { syncItems } from '../lib/onInitExtension';
+import { SquarePluginOptions } from '../types';
+
+export const Items = (pluginOptions: SquarePluginOptions): CollectionConfig => ({
 	slug: 'square-items',
 	access: {
 		create: () => false,
@@ -27,6 +31,31 @@ export const Items = (): CollectionConfig => ({
 		group: 'Square',
 		useAsTitle: 'name',
 	},
+	endpoints: [
+		{
+			path: '/refresh',
+			method: 'get',
+			handler: async (req: PayloadRequest) => {
+				const { payload } = req;
+
+				try {
+					// Add your Square API refresh logic here
+					await syncItems(payload, pluginOptions);
+
+					return Response.json({
+						status: 200,
+						message: 'Items refreshed successfully',
+					});
+				} catch (error: any) {
+					return Response.json({
+						status: 500,
+						message: 'Failed to refresh items',
+						error: error.message,
+					});
+				}
+			},
+		},
+	],
 	fields: [
 		{
 			name: 'squareId',
@@ -57,24 +86,13 @@ export const Items = (): CollectionConfig => ({
 			required: true,
 		},
 		{
-			name: 'images',
+			name: 'variations',
 			type: 'array',
 			admin: {
 				readOnly: true,
 			},
-			fields: [
-				{
-					name: 'id',
-					type: 'text',
-					label: 'ID',
-				},
-				{
-					name: 'url',
-					type: 'text',
-					label: 'URL',
-				},
-			],
-			label: 'Images',
+			fields: ItemVariations().fields,
+			label: 'Variations',
 		},
 		{
 			name: 'updatedAt',
@@ -92,12 +110,14 @@ export const Items = (): CollectionConfig => ({
 			label: 'Display',
 		},
 		{
-			name: 'categoryName',
-			type: 'text',
+			name: 'category',
+			type: 'relationship',
 			admin: {
 				readOnly: true,
 			},
-			label: 'Category Name',
+			hasMany: false,
+			label: 'Category',
+			relationTo: 'square-categories',
 		},
 	],
 	labels: {

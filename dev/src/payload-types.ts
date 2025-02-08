@@ -16,17 +16,23 @@ export interface Config {
     media: Media;
     'square-categories': SquareCategory;
     'square-items': SquareItem;
+    'square-item-variations': SquareItemVariation;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    'square-categories': {
+      items: 'square-items';
+    };
+  };
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'square-categories': SquareCategoriesSelect<false> | SquareCategoriesSelect<true>;
     'square-items': SquareItemsSelect<false> | SquareItemsSelect<true>;
+    'square-item-variations': SquareItemVariationsSelect<false> | SquareItemVariationsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -125,6 +131,8 @@ export interface Media {
   focalY?: number | null;
 }
 /**
+ * Categories synchronized from Square.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "square-categories".
  */
@@ -134,9 +142,14 @@ export interface SquareCategory {
   name: string;
   updatedAt: string;
   display?: boolean | null;
-  items?: (string | SquareItem)[] | null;
+  items?: {
+    docs?: (string | SquareItem)[] | null;
+    hasNextPage?: boolean | null;
+  } | null;
 }
 /**
+ * Items synchronized from Square.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "square-items".
  */
@@ -145,15 +158,63 @@ export interface SquareItem {
   squareId: string;
   squareCategoryId: string;
   name: string;
-  images?:
+  variations?:
     | {
+        squareId: string;
+        name: string;
+        ordinal: number;
+        pricingType: string;
+        priceMoney: {
+          amount: number;
+          currency: string;
+        };
+        images?:
+          | {
+              squareId?: string | null;
+              url?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        measurementUnit?: {
+          squareId?: string | null;
+          type?: string | null;
+          precision?: number | null;
+        };
         id?: string | null;
-        url?: string | null;
       }[]
     | null;
   updatedAt: string;
   display?: boolean | null;
-  categoryName?: string | null;
+  category?: (string | null) | SquareCategory;
+}
+/**
+ * Item variations synchronized from Square.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "square-item-variations".
+ */
+export interface SquareItemVariation {
+  id: string;
+  squareId: string;
+  name: string;
+  ordinal: number;
+  pricingType: string;
+  priceMoney: {
+    amount: number;
+    currency: string;
+  };
+  images?:
+    | {
+        squareId?: string | null;
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  measurementUnit?: {
+    squareId?: string | null;
+    type?: string | null;
+    precision?: number | null;
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -181,6 +242,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'square-items';
         value: string | SquareItem;
+      } | null)
+    | ({
+        relationTo: 'square-item-variations';
+        value: string | SquareItemVariation;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -286,15 +351,68 @@ export interface SquareItemsSelect<T extends boolean = true> {
   squareId?: T;
   squareCategoryId?: T;
   name?: T;
-  images?:
+  variations?:
     | T
     | {
+        squareId?: T;
+        name?: T;
+        ordinal?: T;
+        pricingType?: T;
+        priceMoney?:
+          | T
+          | {
+              amount?: T;
+              currency?: T;
+            };
+        images?:
+          | T
+          | {
+              squareId?: T;
+              url?: T;
+              id?: T;
+            };
+        measurementUnit?:
+          | T
+          | {
+              squareId?: T;
+              type?: T;
+              precision?: T;
+            };
         id?: T;
-        url?: T;
       };
   updatedAt?: T;
   display?: T;
-  categoryName?: T;
+  category?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "square-item-variations_select".
+ */
+export interface SquareItemVariationsSelect<T extends boolean = true> {
+  squareId?: T;
+  name?: T;
+  ordinal?: T;
+  pricingType?: T;
+  priceMoney?:
+    | T
+    | {
+        amount?: T;
+        currency?: T;
+      };
+  images?:
+    | T
+    | {
+        squareId?: T;
+        url?: T;
+        id?: T;
+      };
+  measurementUnit?:
+    | T
+    | {
+        squareId?: T;
+        type?: T;
+        precision?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
