@@ -118,6 +118,27 @@ export const Items = (pluginOptions: SquarePluginOptions): CollectionConfig => (
       label: 'Category',
       relationTo: 'square-categories',
     },
+    {
+      name: 'modifierLists',
+      type: 'array',
+      admin: {
+        readOnly: true,
+      },
+      fields: [
+        {
+          name: 'modifierListId',
+          type: 'text',
+          label: 'Modifier List ID',
+        },
+        {
+          name: 'enabled',
+          type: 'checkbox',
+          defaultValue: true,
+          label: 'Enabled',
+        },
+      ],
+      label: 'Modifier Lists',
+    },
   ],
   labels: {
     plural: 'Items',

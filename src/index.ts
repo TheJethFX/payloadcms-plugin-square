@@ -4,6 +4,7 @@ import type { SquarePluginOptions } from 'src/types/index.js'
 import { Categories } from 'src/collections/Categories.js'
 import { Items } from 'src/collections/Items.js'
 import { ItemVariations } from 'src/collections/ItemVariations.js'
+import { ModifierLists } from 'src/collections/ModifierLists.js'
 import { onInitExtension } from 'src/sync/index.js'
 
 export type { SquarePluginOptions } from 'src/types/index.js'
@@ -43,6 +44,7 @@ export const squarePlugin =
       Categories(pluginOptions),
       Items(pluginOptions),
       ItemVariations(),
+      ModifierLists(pluginOptions),
     ]
 
     config.collections = (config.collections || []).map((collection) => {

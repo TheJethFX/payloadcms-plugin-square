@@ -64,12 +64,19 @@ export async function syncItems(payload: Payload, options: SquarePluginOptions):
           },
         })
 
+        const modifierListInfo = object.itemData?.modifierListInfo || []
+        const modifierLists = modifierListInfo.map((info) => ({
+          enabled: info.enabled ?? true,
+          modifierListId: info.modifierListId || '',
+        }))
+
         const itemData = {
           name: object.itemData?.name || 'N/A',
           category: categories.docs[0] || null,
           categoryId: categories.docs[0]?.id.toString(),
           categoryName: categories.docs[0]?.name || 'N/A',
           display: !object.itemData?.isArchived || true,
+          modifierLists,
           squareCategoryId,
           squareId: object.id,
           updatedAt: object.updatedAt && object.updatedAt,

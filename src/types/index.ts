@@ -128,3 +128,68 @@ export type SquareItemVariation = {
    */
   squareId: string
 }
+
+/**
+ * Represents a modifier from Square
+ */
+export type SquareModifier = {
+  /**
+   * Modifier list ID this modifier belongs to
+   */
+  modifierListId: string
+
+  /**
+   * Name of the modifier
+   */
+  name: string
+
+  /**
+   * Whether this modifier is selected by default
+   */
+  onByDefault?: boolean
+
+  /**
+   * Display order
+   */
+  ordinal: number
+
+  /**
+   * Price information for the modifier
+   */
+  priceMoney: SquarePriceMoney
+
+  /**
+   * Square ID of the modifier
+   */
+  squareId: string
+}
+
+/**
+ * Represents a modifier list from Square
+ */
+export type SquareModifierList = {
+  /**
+   * Modifiers in this list
+   */
+  modifiers: SquareModifier[]
+
+  /**
+   * Name of the modifier list
+   */
+  name: string
+
+  /**
+   * Display order
+   */
+  ordinal: number
+
+  /**
+   * Selection type for the modifiers
+   */
+  selectionType: 'MULTIPLE' | 'SINGLE'
+
+  /**
+   * Square ID of the modifier list
+   */
+  squareId: string
+}
