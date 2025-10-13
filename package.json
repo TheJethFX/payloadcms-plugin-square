@@ -37,64 +37,99 @@
       "path": "cz-conventional-changelog"
     }
   },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "type": "module",
   "scripts": {
-    "prepare": "node ./prepublish.cjs",
-    "build": "tsc --project tsconfig.json",
-    "build:all": "pnpm build && pnpm -C dev build",
-    "build:app": "pnpm -C dev build",
-    "commit": "git-cz",
-    "clean": "rimraf {dist,*.tsbuildinfo,package}",
-    "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/",
-    "dev": "pnpm -C dev dev",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prepack": "pnpm prepublishOnly",
-    "prepublishOnly": "pnpm clean && pnpm build && pnpm copyfiles",
+    "build": "pnpm copyfiles && pnpm build:types && pnpm build:swc",
+    "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
+    "build:types": "tsc --outDir dist --rootDir ./src",
+    "clean": "rimraf {dist,*.tsbuildinfo}",
+    "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png,json}\" dist/",
+    "dev": "next dev dev --turbo",
+    "dev:generate-importmap": "pnpm dev:payload generate:importmap",
+    "dev:generate-types": "pnpm dev:payload generate:types",
+    "dev:payload": "cross-env PAYLOAD_CONFIG_PATH=./dev/payload.config.ts payload",
+    "generate:importmap": "pnpm dev:generate-importmap",
+    "generate:types": "pnpm dev:generate-types",
+    "lint": "eslint",
+    "lint:fix": "eslint ./src --fix",
+    "prepublishOnly": "pnpm clean && pnpm build",
+    "test": "pnpm test:int && pnpm test:e2e",
+    "test:e2e": "playwright test",
+    "test:int": "vitest",
     "semantic-release": "semantic-release"
   },
   "peerDependencies": {
-    "@payloadcms/db-mongodb": "^3.22.0",
-    "@payloadcms/ui": "^3.22.0",
-    "next": "^15.1.6",
-    "payload": "^3.22.0",
+    "next": "^15.5.4",
+    "payload": "^3.59.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "square": "^40.0.0"
   },
   "devDependencies": {
-    "@payloadcms/eslint-config": "3.9.0",
+    "@eslint/eslintrc": "^3.3.1",
+    "@payloadcms/db-mongodb": "^3.59.1",
+    "@payloadcms/eslint-config": "3.28.0",
+    "@payloadcms/next": "^3.59.1",
+    "@payloadcms/richtext-lexical": "^3.59.1",
+    "@payloadcms/ui": "^3.59.1",
+    "@playwright/test": "^1.56.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
+    "@swc-node/register": "^1.11.1",
+    "@swc/cli": "^0.7.8",
     "@types/node": "22.7.5",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
     "copyfiles": "^2.4.1",
+    "cross-env": "^10.1.0",
     "cz-conventional-changelog": "^3.3.0",
-    "next": "15.1.6",
+    "eslint": "^9.37.0",
+    "eslint-config-next": "^15.5.4",
+    "graphql": "^16.11.0",
+    "mongodb-memory-server": "^10.2.3",
+    "next": "15.5.4",
+    "open": "^10.2.0",
+    "payload": "^3.59.1",
+    "prettier": "^3.6.2",
+    "qs-esm": "^7.0.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "rimraf": "^6.0.1",
-    "semantic-release": "^24.2.0",
-    "square": "^40.0.0",
-    "typescript": "5.7.3"
+    "semantic-release": "^24.2.9",
+    "sharp": "^0.34.4",
+    "sort-package-json": "^3.4.0",
+    "square": "^43.1.0",
+    "typescript": "5.8.3",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4"
   },
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "import": "./src/index.ts",
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
     },
     "./types": {
-      "import": "./dist/exports/types.js",
-      "types": "./dist/exports/types.d.ts",
-      "default": "./dist/exports/types.js"
+      "import": "./src/exports/types.ts",
+      "types": "./src/exports/types.ts",
+      "default": "./src/exports/types.ts"
     },
     "./client": {
-      "import": "./dist/exports/client.js",
-      "types": "./dist/exports/client.d.ts",
-      "default": "./dist/exports/client.js"
+      "import": "./src/exports/client.ts",
+      "types": "./src/exports/client.ts",
+      "default": "./src/exports/client.ts"
+    },
+    "./rsc": {
+      "import": "./src/exports/rsc.ts",
+      "types": "./src/exports/rsc.ts",
+      "default": "./src/exports/rsc.ts"
     }
+  },
+  "engines": {
+    "node": "^18.20.2 || >=20.9.0",
+    "pnpm": "^9 || ^10"
   },
   "publishConfig": {
     "access": "public",
@@ -116,7 +151,19 @@
         "import": "./dist/exports/client.js",
         "types": "./dist/exports/client.d.ts",
         "default": "./dist/exports/client.js"
+      },
+      "./rsc": {
+        "import": "./dist/exports/rsc.js",
+        "types": "./dist/exports/rsc.d.ts",
+        "default": "./dist/exports/rsc.js"
       }
     }
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp",
+      "esbuild",
+      "unrs-resolver"
+    ]
   }
 }
