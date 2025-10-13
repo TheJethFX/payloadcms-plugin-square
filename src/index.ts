@@ -2,6 +2,7 @@ import type { Config } from 'payload'
 import type { SquarePluginOptions } from 'src/types/index.js'
 
 import { Categories } from 'src/collections/Categories.js'
+import { Inventory } from 'src/collections/Inventory.js'
 import { Items } from 'src/collections/Items.js'
 import { ItemVariations } from 'src/collections/ItemVariations.js'
 import { ModifierLists } from 'src/collections/ModifierLists.js'
@@ -42,6 +43,7 @@ export const squarePlugin =
     config.collections = [
       ...(config.collections || []),
       Categories(pluginOptions),
+      Inventory(pluginOptions),
       Items(pluginOptions),
       ItemVariations(),
       ModifierLists(pluginOptions),

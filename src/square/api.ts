@@ -50,3 +50,29 @@ export async function listSquareCatalogObjects(
     handleSquareError(error)
   }
 }
+
+/**
+ * Batch retrieves inventory counts for catalog objects from Square API
+ * @param catalogObjectIds - Array of catalog object IDs (variation IDs) to fetch inventory for
+ * @param locationIds - Optional array of location IDs to filter by
+ * @param options - Plugin configuration options
+ * @returns Array of inventory counts
+ * @throws Error if API call fails
+ */
+export async function batchRetrieveInventoryCounts(
+  catalogObjectIds: string[],
+  locationIds: string[] | undefined,
+  options: SquarePluginOptions,
+): Promise<Square.InventoryCount[] | undefined> {
+  const client = createSquareClient(options)
+  try {
+    // Square SDK uses inventoryApi property for inventory-related methods
+    const response = await client.inventory.batchGetCounts({
+      catalogObjectIds,
+      locationIds,
+    })
+    return response.data || []
+  } catch (error) {
+    handleSquareError(error)
+  }
+}

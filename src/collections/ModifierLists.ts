@@ -146,4 +146,8 @@ export const ModifierLists = (pluginOptions: SquarePluginOptions): CollectionCon
       label: 'Modifiers',
     },
   ],
+  labels: {
+    plural: 'Modifier Lists',
+    singular: 'Modifier List',
+  },
 })

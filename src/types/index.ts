@@ -193,3 +193,40 @@ export type SquareModifierList = {
    */
   squareId: string
 }
+
+/**
+ * Represents an inventory count from Square
+ */
+export type SquareInventoryCount = {
+  /**
+   * Timestamp when the inventory count was calculated
+   */
+  calculatedAt: string
+
+  /**
+   * The catalog object ID (usually a variation ID)
+   */
+  catalogObjectId: string
+
+  /**
+   * Location ID where this inventory is tracked
+   */
+  locationId: string
+
+  /**
+   * Quantity as a string (Square uses string for decimal precision)
+   */
+  quantity: string
+
+  /**
+   * Inventory state
+   */
+  state:
+    | 'IN_STOCK'
+    | 'ORDERED_FROM_VENDOR'
+    | 'RECEIVED_FROM_VENDOR'
+    | 'RESERVED_FOR_SALE'
+    | 'RETURNED_BY_CUSTOMER'
+    | 'SOLD'
+    | 'SOLD_ONLINE'
+}
