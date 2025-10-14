@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-next.8](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.7...v1.3.0-next.8) (2025-10-14)
+
+
+### Bug Fixes
+
+* Add pkgRoot configuration for npm plugin in release config ([41e635c](https://github.com/TheJethFX/payloadcms-plugin-square/commit/41e635cc0839c38c65fda2230d88eb5e814709b1))
+
+
+### Features
+
+* Enhance build process and add package preparation script for publishing ([bdb058e](https://github.com/TheJethFX/payloadcms-plugin-square/commit/bdb058e7b03f8d2244dbcf946387714ac2e0ca0b))
+
 # [1.3.0-next.7](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.6...v1.3.0-next.7) (2025-10-14)
 
 
