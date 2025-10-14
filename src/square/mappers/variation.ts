@@ -1,6 +1,6 @@
-import type { SquareItemVariation, SquareMeasurementUnit } from 'src/types/index.js'
-
 import { Square } from 'square'
+
+import type { SquareItemVariation, SquareMeasurementUnit } from '../../types/index.js'
 
 /**
  * Maps a Square item variation to the plugin format

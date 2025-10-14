@@ -1,7 +1,8 @@
 import type { CollectionConfig, PayloadRequest } from 'payload'
-import type { SquarePluginOptions } from 'src/types/index.js'
 
-import { syncModifiers } from 'src/sync/modifiers.js'
+import type { SquarePluginOptions } from '../types/index.js'
+
+import { syncModifiers } from '../sync/modifiers.js'
 
 export const ModifierLists = (pluginOptions: SquarePluginOptions): CollectionConfig => ({
   slug: 'square-modifier-lists',

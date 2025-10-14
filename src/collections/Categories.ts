@@ -1,7 +1,8 @@
 import type { CollectionConfig, PayloadRequest } from 'payload'
-import type { SquarePluginOptions } from 'src/types/index.js'
 
-import { syncCategories } from 'src/sync/categories.js'
+import type { SquarePluginOptions } from '../types/index.js'
+
+import { syncCategories } from '../sync/categories.js'
 
 export const Categories = (pluginOptions: SquarePluginOptions): CollectionConfig => ({
   slug: 'square-categories',

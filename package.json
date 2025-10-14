@@ -107,24 +107,24 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.ts",
-      "types": "./dist/index.ts",
-      "default": "./dist/index.ts"
+      "import": "./src/index.ts",
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
     },
     "./types": {
-      "import": "./dist/exports/types.ts",
-      "types": "./dist/exports/types.ts",
-      "default": "./dist/exports/types.ts"
+      "import": "./src/exports/types.ts",
+      "types": "./src/exports/types.ts",
+      "default": "./src/exports/types.ts"
     },
     "./client": {
-      "import": "./dist/exports/client.ts",
-      "types": "./dist/exports/client.ts",
-      "default": "./dist/exports/client.ts"
+      "import": "./src/exports/client.ts",
+      "types": "./src/exports/client.ts",
+      "default": "./src/exports/client.ts"
     },
     "./rsc": {
-      "import": "./dist/exports/rsc.ts",
-      "types": "./dist/exports/rsc.ts",
-      "default": "./dist/exports/rsc.ts"
+      "import": "./src/exports/rsc.ts",
+      "types": "./src/exports/rsc.ts",
+      "default": "./src/exports/rsc.ts"
     }
   },
   "engines": {

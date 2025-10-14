@@ -1,5 +1,6 @@
 import type { Square } from 'square'
-import type { SquareModifier, SquareModifierList } from 'src/types/index.js'
+
+import type { SquareModifier, SquareModifierList } from '../../types/index.js'
 
 /**
  * Maps a Square modifier to the plugin format

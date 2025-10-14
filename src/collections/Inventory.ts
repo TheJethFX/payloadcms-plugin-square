@@ -1,7 +1,8 @@
 import type { CollectionConfig, PayloadRequest } from 'payload'
-import type { SquarePluginOptions } from 'src/types/index.js'
 
-import { syncInventory } from 'src/sync/inventory.js'
+import type { SquarePluginOptions } from '../types/index.js'
+
+import { syncInventory } from '../sync/inventory.js'
 
 /**
  * Inventory collection configuration

@@ -1,7 +1,8 @@
 import type { Payload } from 'payload'
-import type { SquarePluginOptions } from 'src/types/index.js'
 
-import { batchRetrieveInventoryCounts } from 'src/square/api.js'
+import type { SquarePluginOptions } from '../types/index.js'
+
+import { batchRetrieveInventoryCounts } from '../square/api.js'
 
 /**
  * Syncs inventory counts from Square to Payload

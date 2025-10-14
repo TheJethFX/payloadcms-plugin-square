@@ -1,13 +1,15 @@
 import type { Payload } from 'payload'
-import type { SquarePluginOptions } from 'src/types/index.js'
 
 import { Square } from 'square'
-import { listSquareCatalogObjects } from 'src/square/api.js'
+
+import type { SquarePluginOptions } from '../types/index.js'
+
+import { listSquareCatalogObjects } from '../square/api.js'
 import {
   createImageUrlMap,
   createItemVariationsMap,
   createMeasurementUnitMap,
-} from 'src/square/mappers/index.js'
+} from '../square/mappers/index.js'
 
 /**
  * Syncs Square items (with variations) to Payload CMS

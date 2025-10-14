@@ -1,8 +1,10 @@
 import type { Payload } from 'payload'
-import type { SquarePluginOptions } from 'src/types/index.js'
 
 import { Square } from 'square'
-import { listSquareCatalogObjects } from 'src/square/api.js'
+
+import type { SquarePluginOptions } from '../types/index.js'
+
+import { listSquareCatalogObjects } from '../square/api.js'
 
 /**
  * Syncs Square categories to Payload CMS

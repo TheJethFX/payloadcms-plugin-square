@@ -1,9 +1,11 @@
 import type { Payload } from 'payload'
-import type { SquarePluginOptions } from 'src/types/index.js'
 
 import { Square } from 'square'
-import { listSquareCatalogObjects } from 'src/square/api.js'
-import { createModifierListMap } from 'src/square/mappers/index.js'
+
+import type { SquarePluginOptions } from '../types/index.js'
+
+import { listSquareCatalogObjects } from '../square/api.js'
+import { createModifierListMap } from '../square/mappers/index.js'
 
 /**
  * Syncs Square modifier lists and modifiers to Payload CMS

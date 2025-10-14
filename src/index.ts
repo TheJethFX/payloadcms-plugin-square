@@ -1,15 +1,14 @@
 import type { Config } from 'payload'
-import type { SquarePluginOptions } from 'src/types/index.js'
 
-import { Categories } from 'src/collections/Categories.js'
-import { Inventory } from 'src/collections/Inventory.js'
-import { Items } from 'src/collections/Items.js'
-import { ItemVariations } from 'src/collections/ItemVariations.js'
-import { ModifierLists } from 'src/collections/ModifierLists.js'
-import { onInitExtension } from 'src/sync/index.js'
-import { handleSquareWebhook } from 'src/webhooks/handler.js'
+import type { SquarePluginOptions } from './types/index.js'
 
-export type { SquarePluginOptions } from 'src/types/index.js'
+import { Categories } from './collections/Categories.js'
+import { Inventory } from './collections/Inventory.js'
+import { Items } from './collections/Items.js'
+import { ItemVariations } from './collections/ItemVariations.js'
+import { ModifierLists } from './collections/ModifierLists.js'
+import { onInitExtension } from './sync/index.js'
+import { handleSquareWebhook } from './webhooks/handler.js'
 
 export const squarePlugin =
   (pluginOptions: SquarePluginOptions) =>

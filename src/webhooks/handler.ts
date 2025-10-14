@@ -1,11 +1,13 @@
 import type { PayloadRequest } from 'payload'
-import type { SquarePluginOptions } from 'src/types/index.js'
 
 import { WebhooksHelper } from 'square'
-import { syncCategories } from 'src/sync/categories.js'
-import { syncInventory } from 'src/sync/inventory.js'
-import { syncItems } from 'src/sync/items.js'
-import { syncModifiers } from 'src/sync/modifiers.js'
+
+import type { SquarePluginOptions } from '../types/index.js'
+
+import { syncCategories } from '../sync/categories.js'
+import { syncInventory } from '../sync/inventory.js'
+import { syncItems } from '../sync/items.js'
+import { syncModifiers } from '../sync/modifiers.js'
 
 /**
  * Handles incoming webhooks from Square

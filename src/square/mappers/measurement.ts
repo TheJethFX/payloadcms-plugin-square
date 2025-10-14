@@ -1,5 +1,6 @@
 import type { Square } from 'square'
-import type { SquareMeasurementUnit } from 'src/types/index.js'
+
+import type { SquareMeasurementUnit } from '../../types/index.js'
 
 /**
  * Maps a Square measurement unit to the plugin format

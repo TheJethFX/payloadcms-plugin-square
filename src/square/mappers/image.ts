@@ -1,5 +1,6 @@
 import type { Square } from 'square'
-import type { SquareImage } from 'src/types/index.js'
+
+import type { SquareImage } from '../../types/index.js'
 
 /**
  * Maps a Square CatalogObject (image type) to a SquareImage

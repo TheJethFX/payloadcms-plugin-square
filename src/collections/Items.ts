@@ -1,8 +1,9 @@
 import type { CollectionConfig, PayloadRequest } from 'payload'
-import type { SquarePluginOptions } from 'src/types/index.js'
 
-import { ItemVariations } from 'src/collections/ItemVariations.js'
-import { syncItems } from 'src/sync/items.js'
+import type { SquarePluginOptions } from '../types/index.js'
+
+import { ItemVariations } from '../collections/ItemVariations.js'
+import { syncItems } from '../sync/items.js'
 
 export const Items = (pluginOptions: SquarePluginOptions): CollectionConfig => ({
   slug: 'square-items',

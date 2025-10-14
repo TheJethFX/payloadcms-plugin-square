@@ -4,4 +4,4 @@ export type {
   SquareMeasurementUnit,
   SquarePluginOptions,
   SquarePriceMoney,
-} from 'src/types/index.js'
+} from '../types/index.js'
