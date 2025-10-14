@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-next.6](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.5...v1.3.0-next.6) (2025-10-14)
+
+
+### Features
+
+* Add Inventory collection and sync functionality with Square API ([7423655](https://github.com/TheJethFX/payloadcms-plugin-square/commit/7423655fc796becb77c302c166255a38638b7a29))
+* Add Modifier Lists  collection and sync functionality with Square API ([a1a478d](https://github.com/TheJethFX/payloadcms-plugin-square/commit/a1a478d4cef005316555b3aab2ff2b566bc43192))
+* Add Square webhook handling and configuration ([a60cfd4](https://github.com/TheJethFX/payloadcms-plugin-square/commit/a60cfd453bd9b19aba276ab08b01dc77deef8b15))
+
 # [1.3.0-next.5](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.4...v1.3.0-next.5) (2025-02-08)
 
 
