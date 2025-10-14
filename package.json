@@ -58,8 +58,7 @@
     "prepublishOnly": "pnpm clean && pnpm build",
     "test": "pnpm test:int && pnpm test:e2e",
     "test:e2e": "playwright test",
-    "test:int": "vitest",
-    "semantic-release": "semantic-release"
+    "test:int": "vitest"
   },
   "peerDependencies": {
     "next": "^15.5.5",
