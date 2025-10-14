@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-next.13](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.12...v1.3.0-next.13) (2025-10-14)
+
+
+### Bug Fixes
+
+* Update copyfiles script to exclude README.md and LICENSE from dist directory ([853c2ba](https://github.com/TheJethFX/payloadcms-plugin-square/commit/853c2ba065b9835b7042dfab3175988b890d9a5d))
+
 # [1.3.0-next.12](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.11...v1.3.0-next.12) (2025-10-14)
 
 
