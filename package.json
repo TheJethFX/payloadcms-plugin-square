@@ -37,13 +37,12 @@
       "path": "cz-conventional-changelog"
     }
   },
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "main": "./dist/index.ts",
+  "types": "./dist/index.ts",
   "type": "module",
   "scripts": {
-    "build": "pnpm copyfiles && pnpm build:types && pnpm build:swc && pnpm build:package",
-    "build:package": "node scripts/prepare-package.js",
-    "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
+    "build": "pnpm copyfiles && pnpm build:types && pnpm build:swc",
+    "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths --ignore **/*.test.ts **/*.test.tsx **/__tests__/**",
     "build:types": "tsc --outDir dist --rootDir ./src",
     "clean": "rimraf {dist,*.tsbuildinfo}",
     "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png,json}\" dist/ && copyfiles README.md LICENSE dist/",
@@ -108,40 +107,24 @@
   },
   "exports": {
     ".": {
-      "import": "./src/index.ts",
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
+      "import": "./dist/index.ts",
+      "types": "./dist/index.ts",
+      "default": "./dist/index.ts"
     },
     "./types": {
-      "import": "./src/exports/types.ts",
-      "types": "./src/exports/types.ts",
-      "default": "./src/exports/types.ts"
+      "import": "./dist/exports/types.ts",
+      "types": "./dist/exports/types.ts",
+      "default": "./dist/exports/types.ts"
     },
     "./client": {
-      "import": "./src/exports/client.ts",
-      "types": "./src/exports/client.ts",
-      "default": "./src/exports/client.ts"
+      "import": "./dist/exports/client.ts",
+      "types": "./dist/exports/client.ts",
+      "default": "./dist/exports/client.ts"
     },
     "./rsc": {
-      "import": "./src/exports/rsc.ts",
-      "types": "./src/exports/rsc.ts",
-      "default": "./src/exports/rsc.ts"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "client": [
-        "src/exports/client.ts"
-      ],
-      "types": [
-        "src/exports/types.ts"
-      ],
-      "rsc": [
-        "src/exports/rsc.ts"
-      ],
-      "*": [
-        "src/*"
-      ]
+      "import": "./dist/exports/rsc.ts",
+      "types": "./dist/exports/rsc.ts",
+      "default": "./dist/exports/rsc.ts"
     }
   },
   "engines": {
