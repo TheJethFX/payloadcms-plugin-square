@@ -107,24 +107,24 @@
   },
   "exports": {
     ".": {
-      "import": "./src/index.ts",
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
+      "import": "./dist/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.ts"
     },
     "./types": {
-      "import": "./src/exports/types.ts",
-      "types": "./src/exports/types.ts",
-      "default": "./src/exports/types.ts"
+      "import": "./dist/exports/types.ts",
+      "types": "./dist/exports/types.d.ts",
+      "default": "./dist/exports/types.ts"
     },
     "./client": {
-      "import": "./src/exports/client.ts",
-      "types": "./src/exports/client.ts",
-      "default": "./src/exports/client.ts"
+      "import": "./dist/exports/client.ts",
+      "types": "./dist/exports/client.d.ts",
+      "default": "./dist/exports/client.ts"
     },
     "./rsc": {
-      "import": "./src/exports/rsc.ts",
-      "types": "./src/exports/rsc.ts",
-      "default": "./src/exports/rsc.ts"
+      "import": "./dist/exports/rsc.ts",
+      "types": "./dist/exports/rsc.d.ts",
+      "default": "./dist/exports/rsc.ts"
     }
   },
   "engines": {
@@ -138,24 +138,24 @@
     "types": "./dist/index.d.ts",
     "exports": {
       ".": {
-        "import": "./dist/index.ts",
+        "import": "./dist/index.js",
         "types": "./dist/index.d.ts",
-        "default": "./dist/index.ts"
+        "default": "./dist/index.js"
       },
       "./types": {
-        "import": "./dist/exports/types.ts",
+        "import": "./dist/exports/types.js",
         "types": "./dist/exports/types.d.ts",
-        "default": "./dist/exports/types.ts"
+        "default": "./dist/exports/types.js"
       },
       "./client": {
-        "import": "./dist/exports/client.ts",
+        "import": "./dist/exports/client.js",
         "types": "./dist/exports/client.d.ts",
-        "default": "./dist/exports/client.ts"
+        "default": "./dist/exports/client.js"
       },
       "./rsc": {
-        "import": "./dist/exports/rsc.ts",
+        "import": "./dist/exports/rsc.js",
         "types": "./dist/exports/rsc.d.ts",
-        "default": "./dist/exports/rsc.ts"
+        "default": "./dist/exports/rsc.js"
       }
     }
   },
