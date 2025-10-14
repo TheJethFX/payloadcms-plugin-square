@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-next.7](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.6...v1.3.0-next.7) (2025-10-14)
+
+
+### Bug Fixes
+
+* Update Next.js and ESLint dependencies to version 15.5.5 ([f7c9bcc](https://github.com/TheJethFX/payloadcms-plugin-square/commit/f7c9bcc790821038b656647871a25f09e8c29cfd))
+
 # [1.3.0-next.6](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.5...v1.3.0-next.6) (2025-10-14)
 
 
