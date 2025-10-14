@@ -138,24 +138,24 @@
     "types": "./dist/index.d.ts",
     "exports": {
       ".": {
-        "import": "./dist/index.js",
+        "import": "./dist/index.ts",
         "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "default": "./dist/index.ts"
       },
       "./types": {
-        "import": "./dist/exports/types.js",
+        "import": "./dist/exports/types.ts",
         "types": "./dist/exports/types.d.ts",
-        "default": "./dist/exports/types.js"
+        "default": "./dist/exports/types.ts"
       },
       "./client": {
-        "import": "./dist/exports/client.js",
+        "import": "./dist/exports/client.ts",
         "types": "./dist/exports/client.d.ts",
-        "default": "./dist/exports/client.js"
+        "default": "./dist/exports/client.ts"
       },
       "./rsc": {
-        "import": "./dist/exports/rsc.js",
+        "import": "./dist/exports/rsc.ts",
         "types": "./dist/exports/rsc.d.ts",
-        "default": "./dist/exports/rsc.js"
+        "default": "./dist/exports/rsc.ts"
       }
     }
   },
