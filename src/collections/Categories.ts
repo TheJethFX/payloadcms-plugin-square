@@ -1,82 +1,107 @@
-import type { CollectionConfig } from 'payload';
+import type { CollectionConfig, PayloadRequest } from 'payload'
 
-export const Categories = (): CollectionConfig => ({
-	slug: 'square-categories',
-	access: {
-		create: () => false,
-		delete: () => false,
-		read: () => true,
-		update: () => true,
-	},
-	admin: {
-		components: {
-			beforeList: [
-				{
-					path: 'payloadcms-plugin-square/client#RefreshButton',
-					serverProps: {
-						collection: {
-							slug: 'square-categories',
-							label: 'Categories',
-						},
-						label: 'Refresh Categories',
-					},
-				},
-			],
-		},
-		description: 'Categories synchronized from Square.',
-		group: 'Square',
-		useAsTitle: 'name',
-	},
-	fields: [
-		{
-			name: 'squareId',
-			type: 'text',
-			admin: {
-				readOnly: true,
-			},
-			label: 'Square ID',
-			required: true,
-		},
-		{
-			name: 'name',
-			type: 'text',
-			admin: {
-				readOnly: true,
-			},
-			label: 'Name',
-			required: true,
-		},
-		{
-			name: 'updatedAt',
-			type: 'date',
-			admin: {
-				readOnly: true,
-			},
-			label: 'Updated At',
-			required: true,
-		},
-		{
-			name: 'display',
-			type: 'checkbox',
-			defaultValue: true,
-			label: 'Display',
-		},
-		{
-			name: 'items',
-			type: 'relationship',
-			filterOptions: ({ data }) => ({
-				squareCategoryId: {
-					equals: data?.squareId,
-				},
-			}),
-			hasMany: true,
-			label: 'Items',
-			relationTo: 'square-items',
-		},
-	],
-	labels: {
-		plural: 'Categories',
-		singular: 'Category',
-	},
-	timestamps: false,
-});
+import type { SquarePluginOptions } from '../types/index.js'
+
+import { syncCategories } from '../sync/categories.js'
+
+export const Categories = (pluginOptions: SquarePluginOptions): CollectionConfig => ({
+  slug: 'square-categories',
+  access: {
+    create: () => false,
+    delete: () => false,
+    read: () => true,
+    update: () => true,
+  },
+  admin: {
+    components: {
+      beforeList: [
+        {
+          path: 'payloadcms-plugin-square/rsc#RefreshButtonServer',
+          serverProps: {
+            collection: {
+              slug: 'square-categories',
+              label: 'Categories',
+            },
+            label: 'Refresh Categories',
+          },
+        },
+      ],
+    },
+    description: 'Categories synchronized from Square.',
+    group: 'Square',
+    useAsTitle: 'name',
+  },
+  endpoints: [
+    {
+      handler: async (req: PayloadRequest) => {
+        const { payload } = req
+
+        try {
+          await syncCategories(payload, pluginOptions)
+
+          return Response.json({
+            message: 'Categories refreshed successfully',
+            status: 200,
+          })
+        } catch (error: any) {
+          return Response.json({
+            error: error.message,
+            message: 'Failed to refresh categories',
+            status: 500,
+          })
+        }
+      },
+      method: 'get',
+      path: '/refresh',
+    },
+  ],
+  fields: [
+    {
+      name: 'squareId',
+      type: 'text',
+      admin: {
+        readOnly: true,
+      },
+      label: 'Square ID',
+      required: true,
+    },
+    {
+      name: 'name',
+      type: 'text',
+      admin: {
+        readOnly: true,
+      },
+      label: 'Name',
+      required: true,
+    },
+    {
+      name: 'updatedAt',
+      type: 'date',
+      admin: {
+        readOnly: true,
+      },
+      label: 'Updated At',
+      required: true,
+    },
+    {
+      name: 'display',
+      type: 'checkbox',
+      defaultValue: true,
+      label: 'Display',
+    },
+    {
+      name: 'items',
+      type: 'join',
+      collection: 'square-items',
+      hasMany: true,
+      label: 'Items',
+      maxDepth: 3,
+      on: 'category',
+    },
+  ],
+  labels: {
+    plural: 'Categories',
+    singular: 'Category',
+  },
+  timestamps: false,
+})
