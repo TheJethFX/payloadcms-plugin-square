@@ -7,6 +7,7 @@ import { Items } from 'src/collections/Items.js'
 import { ItemVariations } from 'src/collections/ItemVariations.js'
 import { ModifierLists } from 'src/collections/ModifierLists.js'
 import { onInitExtension } from 'src/sync/index.js'
+import { handleSquareWebhook } from 'src/webhooks/handler.js'
 
 export type { SquarePluginOptions } from 'src/types/index.js'
 
@@ -69,7 +70,14 @@ export const squarePlugin =
 
     config.endpoints = [
       ...(config.endpoints || []),
-      // Add additional endpoints here
+      // Webhook endpoint for receiving real-time updates from Square
+      {
+        handler: async (req) => {
+          return handleSquareWebhook(req, pluginOptions)
+        },
+        method: 'post',
+        path: '/square-webhook',
+      },
     ]
 
     config.globals = [

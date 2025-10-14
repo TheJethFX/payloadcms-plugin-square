@@ -27,6 +27,37 @@ export type SquarePluginOptions = {
    * @default SquareEnvironment.Sandbox
    */
   environment?: SquareEnvironment
+
+  /**
+   * Webhook configuration for real-time updates from Square
+   */
+  webhooks?: {
+    /**
+     * Enable webhook support
+     * @default false
+     */
+    enabled: boolean
+
+    /**
+     * Events to subscribe to
+     * @default ['catalog.version.updated', 'inventory.count.updated']
+     */
+    events?: string[]
+
+    /**
+     * Webhook signature key from Square Developer Dashboard
+     * Used to verify webhook authenticity
+     * @required if webhooks.enabled is true
+     */
+    signatureKey: string
+
+    /**
+     * The URL where webhooks will be received
+     * Should be your Payload CMS URL + /api/square-webhook
+     * @required if webhooks.enabled is true
+     */
+    url: string
+  }
 }
 
 /**

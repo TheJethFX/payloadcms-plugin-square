@@ -64,6 +64,11 @@ const buildConfigWithMemoryDB = async () => {
         debug: true,
         enabled: true,
         environment: SquareEnvironment.Production,
+        webhooks: {
+          enabled: true,
+          signatureKey: process.env.SQUARE_WEBHOOK_SIGNATURE_KEY || '',
+          url: process.env.SQUARE_WEBHOOK_URL || 'http://localhost:3000/api/square-webhook',
+        },
       }),
     ],
     secret: process.env.PAYLOAD_SECRET || 'test-secret_key',

@@ -52,7 +52,7 @@ export async function syncInventory(payload: Payload, options: SquarePluginOptio
 
     // Delete all existing inventory records
     await payload.delete({
-      collection: 'square-inventory',
+      collection: 'square-inventory-counts',
       overrideAccess: true,
       where: {},
     })
@@ -64,7 +64,7 @@ export async function syncInventory(payload: Payload, options: SquarePluginOptio
       }
 
       await payload.create({
-        collection: 'square-inventory',
+        collection: 'square-inventory-counts',
         data: {
           calculatedAt: count.calculatedAt || new Date().toISOString(),
           catalogObjectId: count.catalogObjectId,
