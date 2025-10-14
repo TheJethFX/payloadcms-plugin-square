@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.2.0...v1.3.0) (2025-10-14)
+
+
+### Bug Fixes
+
+* Actually refresh Square collections ([f7ff65d](https://github.com/TheJethFX/payloadcms-plugin-square/commit/f7ff65d694d330468ec4d692d16c0e116ed2d130))
+* add missing types dir in exports ([9592cc4](https://github.com/TheJethFX/payloadcms-plugin-square/commit/9592cc4fd7d13ed032629289cf6d30eab00386f5))
+* Add pkgRoot configuration for npm plugin in release config ([41e635c](https://github.com/TheJethFX/payloadcms-plugin-square/commit/41e635cc0839c38c65fda2230d88eb5e814709b1))
+* Add prepublish script to replace package exports with publishConfig ([0ee8c44](https://github.com/TheJethFX/payloadcms-plugin-square/commit/0ee8c44e22b2a8865a5b58b217e05e0bac9caad5))
+* Bump dependencies (includes Payload v3.5.0) ([3a17d0d](https://github.com/TheJethFX/payloadcms-plugin-square/commit/3a17d0d66131d86afb9871f8dadbded5f202dc86))
+* Disable app build job (for now) ([fd47c3a](https://github.com/TheJethFX/payloadcms-plugin-square/commit/fd47c3ad46fe2da2e1bb65ee5231534f21e43a9f))
+* Ensure pkgRoot is set to 'dist' for npm plugin configuration ([8358c2c](https://github.com/TheJethFX/payloadcms-plugin-square/commit/8358c2c14559b309187a01c3f0096b93748f3693))
+* Export TypeScript files in 'dist' instead of 'dist/types' ([03604c9](https://github.com/TheJethFX/payloadcms-plugin-square/commit/03604c9604590ae2bed6f99d9c995df79d9420c1))
+* Map missing 'weight_unit' field for 'measurementUnit' ([02ce3bb](https://github.com/TheJethFX/payloadcms-plugin-square/commit/02ce3bbfea44cdbc2cf7051c01c377a6d53b987a))
+* Map Square items 'display' field according to 'isArchived' value ([b3df2b9](https://github.com/TheJethFX/payloadcms-plugin-square/commit/b3df2b9f62110b94ab10427b984a1ea34c2de7d7))
+* Remove provenance from publishConfig ([d694815](https://github.com/TheJethFX/payloadcms-plugin-square/commit/d694815326912251f3d5fb9a5c36180c11f36e92))
+* remove unused Payload import ([c768fbf](https://github.com/TheJethFX/payloadcms-plugin-square/commit/c768fbf68d1756e68b25afe3affffa7bd7f4b57f))
+* Set maxDepth to 3 for Categories collection ([1e5466c](https://github.com/TheJethFX/payloadcms-plugin-square/commit/1e5466cbe6c8648f22bd6ff75a61af935cfe5af1))
+* Trigger Build ([da388d6](https://github.com/TheJethFX/payloadcms-plugin-square/commit/da388d665146baa4b01be38ed50fd3233e3baac0))
+* Update copyfiles script to exclude README.md and LICENSE from dist directory ([853c2ba](https://github.com/TheJethFX/payloadcms-plugin-square/commit/853c2ba065b9835b7042dfab3175988b890d9a5d))
+* Update import paths to use relative paths instead of absolute paths ([055d102](https://github.com/TheJethFX/payloadcms-plugin-square/commit/055d102f2de9b9aa2b70e84cee37a59685fea8f4))
+* Update main and types paths in package.json to use JavaScript files ([ced1080](https://github.com/TheJethFX/payloadcms-plugin-square/commit/ced108088906b039b32d8d08fc1ca55c7aec06f4))
+* Update Next.js and ESLint dependencies to version 15.5.5 ([f7c9bcc](https://github.com/TheJethFX/payloadcms-plugin-square/commit/f7c9bcc790821038b656647871a25f09e8c29cfd))
+* Update package exports ([9442d8e](https://github.com/TheJethFX/payloadcms-plugin-square/commit/9442d8e0991381e569f77b02ab8716c5f22b7df7))
+* Update package exports ([e62006a](https://github.com/TheJethFX/payloadcms-plugin-square/commit/e62006a2c3679503502433e99aa71d09cf7bcc68))
+* Update package exports ([872a06f](https://github.com/TheJethFX/payloadcms-plugin-square/commit/872a06f890272e848a56b3e0324a16dd41e68f71))
+* Update package imports ([615595d](https://github.com/TheJethFX/payloadcms-plugin-square/commit/615595d463a1100c23456ba664939737b9ff1dc4))
+* Update package paths to use 'dist' directory and remove prepare-package script ([e8ee19c](https://github.com/TheJethFX/payloadcms-plugin-square/commit/e8ee19cda63d0c340f807c7191fc74f8cecb009f))
+* Update package.json exports to reference JavaScript files instead of TypeScript ([a4b694f](https://github.com/TheJethFX/payloadcms-plugin-square/commit/a4b694fa5518a9c8db3a8b11028fdb8dbc9c7ba9))
+* Update package.json to use TypeScript files in exports ([38b261d](https://github.com/TheJethFX/payloadcms-plugin-square/commit/38b261ded97af86b8c647ca5e9fcd6efc7494303))
+* Update prepublish script to replace "main" and "index" fields ([aaaaa32](https://github.com/TheJethFX/payloadcms-plugin-square/commit/aaaaa323357c575bd0e311b0fbfc4c2eb59ef158))
+
+
+### Features
+
+* Add Inventory collection and sync functionality with Square API ([7423655](https://github.com/TheJethFX/payloadcms-plugin-square/commit/7423655fc796becb77c302c166255a38638b7a29))
+* Add Modifier Lists  collection and sync functionality with Square API ([a1a478d](https://github.com/TheJethFX/payloadcms-plugin-square/commit/a1a478d4cef005316555b3aab2ff2b566bc43192))
+* Add Square webhook handling and configuration ([a60cfd4](https://github.com/TheJethFX/payloadcms-plugin-square/commit/a60cfd453bd9b19aba276ab08b01dc77deef8b15))
+* Display item variations ([3786ec4](https://github.com/TheJethFX/payloadcms-plugin-square/commit/3786ec44e2ca679aa6015fa7d7284d8361bdb535))
+* Enhance build process and add package preparation script for publishing ([bdb058e](https://github.com/TheJethFX/payloadcms-plugin-square/commit/bdb058e7b03f8d2244dbcf946387714ac2e0ca0b))
+* Migrate to Square SDK Node.js v40 ([a4105a8](https://github.com/TheJethFX/payloadcms-plugin-square/commit/a4105a80e5ad0d287cc97c481167f0cd606ca6a8))
+* Rename 'imageIds' to 'images' and update related structures for better clarity ([ebe50c9](https://github.com/TheJethFX/payloadcms-plugin-square/commit/ebe50c954cd28c61fb465cf5a070c64267b6c365))
+
 # [1.3.0-next.15](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.14...v1.3.0-next.15) (2025-10-14)
 
 
