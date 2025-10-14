@@ -62,7 +62,7 @@
     "semantic-release": "semantic-release"
   },
   "peerDependencies": {
-    "next": "^15.5.4",
+    "next": "^15.5.5",
     "payload": "^3.59.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -87,10 +87,10 @@
     "cross-env": "^10.1.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.37.0",
-    "eslint-config-next": "^15.5.4",
+    "eslint-config-next": "^15.5.5",
     "graphql": "^16.11.0",
     "mongodb-memory-server": "^10.2.3",
-    "next": "15.5.4",
+    "next": "15.5.5",
     "open": "^10.2.0",
     "payload": "^3.59.1",
     "prettier": "^3.6.2",
