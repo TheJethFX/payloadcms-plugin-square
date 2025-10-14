@@ -16,7 +16,6 @@ module.exports = {
       {
         npmPublish: true,
         tarballDir: 'pack',
-        pkgRoot: 'dist',
       },
     ],
     [
