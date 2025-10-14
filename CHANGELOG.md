@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-next.9](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.8...v1.3.0-next.9) (2025-10-14)
+
+
+### Bug Fixes
+
+* Ensure pkgRoot is set to 'dist' for npm plugin configuration ([8358c2c](https://github.com/TheJethFX/payloadcms-plugin-square/commit/8358c2c14559b309187a01c3f0096b93748f3693))
+
 # [1.3.0-next.8](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0-next.7...v1.3.0-next.8) (2025-10-14)
 
 
