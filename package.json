@@ -45,7 +45,7 @@
     "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths --ignore **/*.test.ts **/*.test.tsx **/__tests__/**",
     "build:types": "tsc --outDir dist --rootDir ./src",
     "clean": "rimraf {dist,*.tsbuildinfo}",
-    "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png,json}\" dist/",
+    "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png,json}\" dist/ && copyfiles README.md LICENSE dist/",
     "dev": "next dev dev --turbo",
     "dev:generate-importmap": "pnpm dev:payload generate:importmap",
     "dev:generate-types": "pnpm dev:payload generate:types",
@@ -61,19 +61,19 @@
     "test:int": "vitest"
   },
   "peerDependencies": {
-    "next": "^15.5.5",
-    "payload": "^3.59.1",
+    "next": "^15.5.6",
+    "payload": "^3.61.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "square": "^40.0.0"
+    "square": "^43.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@payloadcms/db-mongodb": "^3.59.1",
+    "@payloadcms/db-mongodb": "^3.61.1",
     "@payloadcms/eslint-config": "3.28.0",
-    "@payloadcms/next": "^3.59.1",
-    "@payloadcms/richtext-lexical": "^3.59.1",
-    "@payloadcms/ui": "^3.59.1",
+    "@payloadcms/next": "^3.61.1",
+    "@payloadcms/richtext-lexical": "^3.61.1",
+    "@payloadcms/ui": "^3.61.1",
     "@playwright/test": "^1.56.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
@@ -86,45 +86,45 @@
     "cross-env": "^10.1.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.37.0",
-    "eslint-config-next": "^15.5.5",
+    "eslint-config-next": "^15.5.6",
     "graphql": "^16.11.0",
     "mongodb-memory-server": "^10.2.3",
-    "next": "15.5.5",
+    "next": "15.5.6",
     "open": "^10.2.0",
-    "payload": "^3.59.1",
+    "payload": "^3.61.1",
     "prettier": "^3.6.2",
     "qs-esm": "^7.0.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "rimraf": "^6.0.1",
-    "semantic-release": "^24.2.9",
+    "semantic-release": "^25.0.1",
     "sharp": "^0.34.4",
     "sort-package-json": "^3.4.0",
-    "square": "^43.1.0",
-    "typescript": "5.8.3",
+    "square": "^43.2.0",
+    "typescript": "5.9.3",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.5"
   },
   "exports": {
     ".": {
-      "import": "./dist/index.ts",
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.ts"
+      "import": "./src/index.ts",
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
     },
     "./types": {
-      "import": "./dist/exports/types.ts",
-      "types": "./dist/exports/types.d.ts",
-      "default": "./dist/exports/types.ts"
+      "import": "./src/exports/types.ts",
+      "types": "./src/exports/types.ts",
+      "default": "./src/exports/types.ts"
     },
     "./client": {
-      "import": "./dist/exports/client.ts",
-      "types": "./dist/exports/client.d.ts",
-      "default": "./dist/exports/client.ts"
+      "import": "./src/exports/client.ts",
+      "types": "./src/exports/client.ts",
+      "default": "./src/exports/client.ts"
     },
     "./rsc": {
-      "import": "./dist/exports/rsc.ts",
-      "types": "./dist/exports/rsc.d.ts",
-      "default": "./dist/exports/rsc.ts"
+      "import": "./src/exports/rsc.ts",
+      "types": "./src/exports/rsc.ts",
+      "default": "./src/exports/rsc.ts"
     }
   },
   "engines": {
@@ -134,6 +134,7 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/",
+    "provenance": true,
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "exports": {
@@ -161,8 +162,9 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "sharp",
+      "@swc/core",
       "esbuild",
+      "sharp",
       "unrs-resolver"
     ]
   }

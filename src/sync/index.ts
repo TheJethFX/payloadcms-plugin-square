@@ -1,5 +1,6 @@
 import type { Payload } from 'payload'
-import type { SquarePluginOptions } from 'src/types/index.js'
+
+import type { SquarePluginOptions } from '../types/index.js'
 
 import { syncCategories } from './categories.js'
 import { syncInventory } from './inventory.js'

@@ -1,8 +1,10 @@
 import type { Square } from 'square'
-import type { SquarePluginOptions } from 'src/types/index.js'
 
 import { SquareError } from 'square'
-import { createSquareClient } from 'src/square/client.js'
+
+import type { SquarePluginOptions } from '../types/index.js'
+
+import { createSquareClient } from '../square/client.js'
 
 /**
  * Handles Square API errors with detailed error messages

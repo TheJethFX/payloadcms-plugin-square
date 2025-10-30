@@ -1,6 +1,6 @@
-import type { SquarePluginOptions } from 'src/types/index.js'
-
 import { SquareClient, SquareEnvironment } from 'square'
+
+import type { SquarePluginOptions } from '../types/index.js'
 
 /**
  * Creates and configures a Square API client
