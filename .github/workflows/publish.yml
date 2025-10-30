@@ -18,6 +18,11 @@ env:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+      id-token: write
+      attestations: write
 
     steps:
       - uses: actions/checkout@v4
