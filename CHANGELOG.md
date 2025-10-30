@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1-next.1](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.3.0...v1.3.1-next.1) (2025-10-30)
+
+
+### Bug Fixes
+
+* update dependencies, improve TypeScript configuration & update package exports ([f821ff0](https://github.com/TheJethFX/payloadcms-plugin-square/commit/f821ff00aadc92d34a11e931fa5a3a36c579efbd))
+
 # [1.3.0](https://github.com/TheJethFX/payloadcms-plugin-square/compare/v1.2.0...v1.3.0) (2025-10-14)
 
 
