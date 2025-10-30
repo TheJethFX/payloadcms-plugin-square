@@ -13,8 +13,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "emitDeclarationOnly": true,
     "target": "ES2022",
+    "outDir": "./dist",
     "composite": true,
     "plugins": [
       {
