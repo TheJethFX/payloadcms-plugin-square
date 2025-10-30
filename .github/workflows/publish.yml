@@ -27,55 +27,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
       - name: Setup Node@${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-          run_install: false
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-            echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
-        timeout-minutes: 720
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            pnpm-store-
-            pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-
-      - run: pnpm install
-
-      - run: pnpm build
-        name: Build package
+      - name: Build package
+        run: pnpm build
         env:
-          DO_NOT_TRACK: 1 # Disable Turbopack telemetry
-
-      # - run: pnpm build:app
-      #   name: Build dev dir app
-      #   env:
-      #     NEXT_TELEMETRY_DISABLED: 1 # Disable Next.js telemetry
-      #     SQUARE_ACCESS_TOKEN: square-access-token # Square access token
-
-      - name: Cache build
-        uses: actions/cache@v4
-        timeout-minutes: 10
-        with:
-          path: ./*
-          key: ${{ github.sha }}-${{ github.run_number }}
+          DO_NOT_TRACK: 1
 
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: github-actions[bot]@users.noreply.github.com
         run: pnpm exec semantic-release
-
